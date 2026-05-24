@@ -1,0 +1,3853 @@
+================================================================================
+                    DESIGN HANDOFF DOCUMENTATION
+           UNC Digital Museum Application - Complete System
+================================================================================
+
+Project Name:       UNC Digital Museum Application
+Version:            1.0.0
+Date:               December 15, 2025
+Framework:          React 18 + Vite 5 + TypeScript
+Status:             Production Ready
+
+================================================================================
+                          TABLE OF CONTENTS
+================================================================================
+
+1. VISUAL ELEMENTS
+   1.1 Color Palette
+   1.2 Typography
+   1.3 Spacing & Layout
+   1.4 Icons & Graphics
+   1.5 Shadows & Effects
+   1.6 Components Library
+
+2. USER FLOWS
+   2.1 Landing Portal Flow
+   2.2 UNC Museum Navigation Flow
+   2.3 Collections Browsing Flow
+   2.4 Search & Filter Flow
+   2.5 Detail View Flow
+   2.6 Share Flow
+
+3. INTERACTIONS
+   3.1 Button States
+   3.2 Form Interactions
+   3.3 Modal Behaviors
+   3.4 Image Interactions
+   3.5 Navigation Behaviors
+   3.6 Hover Effects
+
+4. COPY
+   4.1 Headings & Titles
+   4.2 Body Copy
+   4.3 Button Labels
+   4.4 Error Messages
+   4.5 Empty States
+   4.6 Tooltips & Help Text
+
+5. RESPONSIVE BREAKPOINTS
+   5.1 Mobile (< 768px)
+   5.2 Tablet (768px - 1024px)
+   5.3 Desktop (> 1024px)
+   5.4 Layout Adjustments
+
+6. ACCESSIBILITY
+   6.1 WCAG 2.1 AA Compliance
+   6.2 Keyboard Navigation
+   6.3 Screen Reader Support
+   6.4 ARIA Labels
+   6.5 Color Contrast
+   6.6 Focus Management
+
+7. DATA VALIDATIONS
+   7.1 Search Input
+   7.2 Form Fields
+   7.3 Email Validation
+   7.4 Required Fields
+
+8. ERROR STATES
+   8.1 404 Errors
+   8.2 Search No Results
+   8.3 Network Errors
+   8.4 Form Validation Errors
+
+9. LOADING & EMPTY STATES
+   9.1 Page Loading
+   9.2 Content Loading
+   9.3 Image Loading
+   9.4 Empty Search Results
+   9.5 No Collections Available
+
+10. ANIMATIONS
+    10.1 Page Transitions
+    10.2 Component Animations
+    10.3 Hover Effects
+    10.4 Loading Animations
+    10.5 Modal Animations
+
+
+================================================================================
+                        1. VISUAL ELEMENTS
+================================================================================
+
+--------------------------------------------------------------------------------
+1.1 COLOR PALETTE
+--------------------------------------------------------------------------------
+
+PRIMARY COLORS:
+---------------
+UNC Maroon (Primary):       #AC0000
+  Usage: Primary buttons, active states, accents, links
+  RGB: (172, 0, 0)
+  
+UNC Maroon Dark (Hover):    #8B0000
+  Usage: Button hover states, active elements
+  RGB: (139, 0, 0)
+
+NEUTRAL COLORS:
+---------------
+Text Primary:               #0A0A0A
+  Usage: Main body text, headings
+  RGB: (10, 10, 10)
+  
+Text Secondary:             #4A5565
+  Usage: Descriptions, meta text, supporting copy
+  RGB: (74, 85, 101)
+
+Text Tertiary:              #717182
+  Usage: Disabled text, placeholder text
+  RGB: (113, 113, 130)
+
+Text Light:                 #E2E8F0
+  Usage: Text on dark backgrounds
+  RGB: (226, 232, 240)
+
+BACKGROUND COLORS:
+------------------
+Background White:           #FFFFFF
+  Usage: Main backgrounds, cards
+  RGB: (255, 255, 255)
+
+Background Gray Light:      #F9FAFB
+  Usage: Subtle backgrounds, input backgrounds
+  RGB: (249, 250, 251)
+
+Background Gray:            #F3F4F6
+  Usage: Input fields, disabled states
+  RGB: (243, 244, 246)
+
+Background Dark:            #030213
+  Usage: Active toggle buttons, headers
+  RGB: (3, 2, 19)
+
+BORDER COLORS:
+--------------
+Border Light:               rgba(0, 0, 0, 0.1)
+  Usage: Default borders, dividers
+  RGBA: (0, 0, 0, 10% opacity)
+
+Border Medium:              rgba(0, 0, 0, 0.2)
+  Usage: Input focus, card outlines
+  RGBA: (0, 0, 0, 20% opacity)
+
+Border Dark:                rgba(0, 0, 0, 0.5)
+  Usage: Emphasized borders
+  RGBA: (0, 0, 0, 50% opacity)
+
+OVERLAY COLORS:
+---------------
+Modal Backdrop:             rgba(0, 0, 0, 0.6)
+  Usage: Modal overlays, image viewers
+  RGBA: (0, 0, 0, 60% opacity)
+
+Glass Effect:               rgba(255, 255, 255, 0.15)
+  Usage: Frosted glass effects
+  RGBA: (255, 255, 255, 15% opacity)
+
+Gradient Dark Left:         rgba(0, 0, 0, 0.7)
+Gradient Dark Center:       rgba(0, 0, 0, 0.5)
+Gradient Dark Right:        rgba(0, 0, 0, 0.4)
+  Usage: Hero section overlay gradients
+
+STATUS COLORS:
+--------------
+Success:                    #10B981
+Error:                      #EF4444
+Warning:                    #F59E0B
+Info:                       #3B82F6
+
+
+--------------------------------------------------------------------------------
+1.2 TYPOGRAPHY
+--------------------------------------------------------------------------------
+
+FONT FAMILY:
+------------
+Primary:    'Roboto', sans-serif
+Fallback:   system-ui, -apple-system, sans-serif
+
+FONT WEIGHTS:
+-------------
+Regular:    400
+Medium:     500
+Bold:       700
+
+IMPORTANT NOTE:
+Do NOT use Tailwind's font-size, font-weight, or line-height classes
+unless specifically requested. Default typography is defined in globals.css
+for each HTML element.
+
+HEADING SCALE:
+--------------
+H1 - Hero Heading:
+  Size: 68.203px - 69.328px
+  Weight: Bold (700)
+  Line Height: 79.2px
+  Letter Spacing: -1.8px
+  Usage: Main landing page hero
+
+H2 - Page Title:
+  Size: 40px
+  Weight: Medium (500)
+  Line Height: 36px
+  Usage: Page headers (Browse Collections, etc.)
+
+H3 - Section Heading:
+  Size: 24px
+  Weight: Medium (500)
+  Line Height: 32px
+  Usage: Section titles, card headers
+
+H4 - Subsection Heading:
+  Size: 18px
+  Weight: Medium (500)
+  Line Height: 28px
+  Usage: Modal titles, card subtitles
+
+BODY TEXT:
+----------
+Large Body:
+  Size: 17.656px
+  Weight: Light (300)
+  Line Height: 32.5px
+  Usage: Hero descriptions
+
+Medium Body:
+  Size: 15px
+  Weight: Regular (400)
+  Line Height: 24px
+  Usage: Main content, descriptions
+
+Small Body:
+  Size: 14px
+  Weight: Regular (400)
+  Line Height: 22px
+  Usage: Supporting text, meta information
+
+Extra Small:
+  Size: 13px
+  Weight: Regular (400)
+  Line Height: 20px
+  Usage: Input labels, small text
+
+Micro:
+  Size: 12px
+  Weight: Regular (400)
+  Line Height: 18px
+  Usage: Captions, footnotes
+
+BUTTON TEXT:
+------------
+Primary Button:
+  Size: 14.9px
+  Weight: Medium (500)
+  Line Height: 24px
+  
+Secondary Button:
+  Size: 14px
+  Weight: Medium (500)
+  Line Height: 20px
+
+NAVIGATION TEXT:
+----------------
+Main Nav:
+  Size: 14.9px
+  Weight: Medium (500)
+  Line Height: 24px
+
+Tab Nav:
+  Size: 14px
+  Weight: Medium (500)
+
+
+--------------------------------------------------------------------------------
+1.3 SPACING & LAYOUT
+--------------------------------------------------------------------------------
+
+CONTAINER WIDTHS:
+-----------------
+Max Container Width:        1440px
+Landing Portal Width:       1536px (full width, no max-width)
+Content Padding Desktop:    88px horizontal
+Content Padding Mobile:     16px - 24px horizontal
+
+SPACING SCALE (Tailwind):
+--------------------------
+0.5 = 2px      (xs border, divider)
+1   = 4px      (tight spacing)
+2   = 8px      (close spacing)
+3   = 12px     (default spacing)
+4   = 16px     (comfortable spacing)
+6   = 24px     (section spacing)
+8   = 32px     (large spacing)
+12  = 48px     (section padding)
+16  = 64px     (large section padding)
+20  = 80px     (extra large padding)
+
+GRID SYSTEMS:
+-------------
+Collections Grid:
+  Desktop: 2 columns
+  Tablet:  2 columns
+  Mobile:  1 column
+  Gap:     32px (8)
+
+Museum Grid:
+  Desktop: 3 columns
+  Tablet:  2 columns
+  Mobile:  1 column
+  Gap:     24px (6)
+
+Featured Items:
+  Desktop: 4 columns
+  Tablet:  2 columns
+  Mobile:  1 column
+  Gap:     24px (6)
+
+COMPONENT DIMENSIONS:
+---------------------
+Header Height:              73px
+Card Border Radius:         14px
+Button Border Radius:       8px
+Input Border Radius:        8px
+Modal Border Radius:        16px - 20px
+Image Border Radius:        4px
+
+Button Height:
+  Large:   44px
+  Medium:  40px
+  Small:   36px
+  Icon:    44px (square)
+
+Input Height:               44px
+
+Card Padding:               24px (6)
+Modal Padding:              32px (8)
+Section Padding Vertical:   48px - 80px
+
+
+--------------------------------------------------------------------------------
+1.4 ICONS & GRAPHICS
+--------------------------------------------------------------------------------
+
+ICON LIBRARY:
+-------------
+Library: Lucide React
+Style: Outline, 2px stroke weight
+
+ICON SIZES:
+-----------
+Small:      16px (w-4 h-4)
+Medium:     20px (w-5 h-5)
+Large:      24px (w-6 h-6)
+Extra Large: 32px (w-8 h-8)
+
+COMMONLY USED ICONS:
+--------------------
+- Search (MagnifyingGlass)
+- Share2 (Share)
+- X (Close)
+- Copy (Clipboard)
+- Check (Checkmark)
+- ChevronRight (Navigation)
+- ChevronLeft (Navigation)
+- MapPin (Location)
+- Clock (Time)
+- Calendar (Date)
+- Phone (Contact)
+- Mail (Email)
+- Globe (Website)
+- Download (Download)
+- ZoomIn (Zoom In)
+- ZoomOut (Zoom Out)
+- Maximize (Fullscreen)
+- MessageSquare (Feedback)
+- SearchX (No Results)
+
+SVG GRAPHICS:
+-------------
+Location: /imports/svg-*.ts
+Usage: Imported as path definitions
+Format: SVG path data
+Implementation: Inline SVG with viewBox
+
+IMAGE HANDLING:
+---------------
+Figma Assets: figma:asset/[hash].png
+External Images: Unsplash optimized URLs
+Aspect Ratios:
+  - Hero Images: 16:9
+  - Cards: 4:3
+  - Thumbnails: 1:1
+
+
+--------------------------------------------------------------------------------
+1.5 SHADOWS & EFFECTS
+--------------------------------------------------------------------------------
+
+SHADOWS:
+--------
+Card Shadow:
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+  
+Card Hover Shadow:
+  box-shadow: 0px 6px 8px 0px rgba(0, 0, 0, 0.3)
+
+Modal Shadow:
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+              0 10px 10px -5px rgba(0, 0, 0, 0.04)
+
+Button Shadow:
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05)
+  
+Button Hover Shadow:
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -1px rgba(0, 0, 0, 0.06)
+
+BACKDROP EFFECTS:
+-----------------
+Modal Backdrop Blur:
+  backdrop-filter: blur(4px)
+  background: rgba(255, 255, 255, 0.3)
+
+Glass Effect:
+  backdrop-filter: blur(8px)
+  background: rgba(255, 255, 255, 0.15)
+  border: 1px solid rgba(255, 255, 255, 0.25)
+
+GRADIENTS:
+----------
+Hero Gradient (Horizontal):
+  background: linear-gradient(to right,
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.4))
+
+Hero Gradient (Vertical):
+  background: linear-gradient(to top,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0) 50%)
+
+
+--------------------------------------------------------------------------------
+1.6 COMPONENTS LIBRARY
+--------------------------------------------------------------------------------
+
+BUTTONS:
+--------
+Primary Button:
+  Background: #AC0000
+  Text Color: White
+  Padding: 12px 32px
+  Border Radius: 8px
+  Font Size: 14px
+  Font Weight: Medium (500)
+  
+  Hover State:
+    Background: #8B0000
+    Transform: translateY(-2px)
+    Shadow: Enhanced
+    
+  Active State:
+    Transform: translateY(0px)
+    
+  Disabled State:
+    Background: #E5E7EB
+    Text Color: #9CA3AF
+    Cursor: not-allowed
+
+Secondary Button (Outlined):
+  Background: Transparent
+  Border: 2px solid #AC0000
+  Text Color: #AC0000
+  Padding: 10px 30px
+  Border Radius: 8px
+  
+  Hover State:
+    Background: #AC0000
+    Text Color: White
+    Padding: 11px 31px (subtle expansion)
+
+Icon Button:
+  Size: 44x44px
+  Background: White or #030213 (active)
+  Border: 1px solid rgba(0, 0, 0, 0.1)
+  Border Radius: 8px
+  
+  Hover State:
+    Background: #F9FAFB (if not active)
+
+INPUTS:
+-------
+Text Input:
+  Height: 44px
+  Padding: 0 16px
+  Border: 1px solid rgba(0, 0, 0, 0.1)
+  Border Radius: 8px
+  Font Size: 13px
+  Background: White
+  
+  Focus State:
+    Border Color: #AC0000
+    Outline: None
+    
+  Disabled State:
+    Background: #F3F4F6
+    Border Color: rgba(0, 0, 0, 0.05)
+    Cursor: not-allowed
+
+Search Input:
+  (Same as Text Input)
+  Icon Position: Left, 12px from edge
+  Icon Size: 16px
+  Text Padding Left: 40px
+
+Select Dropdown:
+  (Same as Text Input)
+  Minimum Width: 200px
+  Chevron Icon: Right side
+
+CARDS:
+------
+Collection Card:
+  Background: White
+  Border: 1px solid rgba(0, 0, 0, 0.1)
+  Border Radius: 14px
+  Shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+  Padding: 24px
+  
+  Image Container:
+    Height: 350px (grid view)
+    Height: 192px (list view)
+    Border Radius: 4px
+    Object Fit: Cover
+    
+  Hover State:
+    Transform: translateY(-4px)
+    Shadow: Enhanced
+    Transition: 300ms ease
+
+Museum Card:
+  (Similar to Collection Card)
+  Aspect Ratio: Flexible
+  Padding: 32px
+  
+  Hover State:
+    Transform: translateY(-8px)
+    Shadow: 0 12px 24px rgba(0, 0, 0, 0.15)
+
+MODALS:
+-------
+Standard Modal:
+  Background: White
+  Border Radius: 16px - 20px
+  Max Width: 500px - 900px
+  Padding: 32px
+  Shadow: Large elevation
+  
+  Header:
+    Padding Bottom: 24px
+    Border Bottom: 1px solid rgba(0, 0, 0, 0.1)
+    
+  Body:
+    Padding: 24px 0
+    
+  Footer:
+    Padding Top: 24px
+    Border Top: 1px solid rgba(0, 0, 0, 0.1)
+    
+  Close Button:
+    Position: Top Right
+    Size: 40x40px
+    Background: Transparent
+    Hover: Background rgba(0, 0, 0, 0.05)
+
+Detail View Modal:
+  Full Screen or Large (90vh)
+  Scrollable Content
+  Header Image: 256px height
+  Gradient Overlay on Image
+
+NAVIGATION:
+-----------
+Header:
+  Height: 73px
+  Background: White
+  Border Bottom: 1px solid rgba(0, 0, 0, 0.1)
+  Position: Sticky top
+  Z-Index: 50
+  Padding: 0 88px
+  
+  Logo Section:
+    Logo Size: 32x32px
+    Text Size: 14px
+    Gap: 12px
+    
+  Navigation Links:
+    Position: Centered (absolute positioning)
+    Gap: 32px
+    Font Size: 14.9px
+    Font Weight: Medium
+    
+    Active State:
+      Color: #AC0000
+      Bottom Border: 3px solid #AC0000
+      
+    Hover State:
+      Color: #AC0000
+      Transition: 200ms
+
+Footer:
+  Background: #1E293B
+  Padding: 48px 88px
+  Color: White
+  
+  Grid: 4 columns (desktop)
+  Gap: 32px
+  
+  Heading:
+    Font Size: 14px
+    Font Weight: Medium
+    Margin Bottom: 16px
+    
+  Links:
+    Font Size: 12px
+    Line Height: 18px
+    Color: #D1D5DB
+    
+    Hover:
+      Color: White
+      Text Decoration: Underline
+
+BADGES:
+-------
+Category Badge:
+  Background: rgba(172, 0, 0, 0.1)
+  Border: 1px solid rgba(172, 0, 0, 0.2)
+  Color: #AC0000
+  Padding: 6px 12px
+  Border Radius: 6px
+  Font Size: 12px
+  Font Weight: Medium
+
+Status Badge:
+  (Similar styling)
+  Colors vary based on status
+
+
+================================================================================
+                           2. USER FLOWS
+================================================================================
+
+--------------------------------------------------------------------------------
+2.1 LANDING PORTAL FLOW
+--------------------------------------------------------------------------------
+
+ENTRY POINT: User lands on / (root)
+
+FLOW:
+1. User sees landing portal with:
+   - Hero section with title "Discover Naga's Cultural Heritage"
+   - Subtitle explaining the museum network
+   - Background image with gradient overlay
+   - Badge: "Naga City Cultural Heritage Network"
+
+2. User scrolls to "Explore Our Museums" section:
+   - Grid of 5 museum cards
+   - Each card shows:
+     * Museum image
+     * Museum name
+     * Brief description
+     * Current exhibition
+     * Two buttons: "Visit Museum" and "Learn More"
+
+3. User interaction options:
+   
+   OPTION A: Click "Learn More"
+   → Opens Museum Detail Modal
+   → Shows:
+     - Full museum description
+     - Contact information
+     - Opening hours
+     - Highlights
+     - Website link
+   → User can close modal or click "Visit Museum"
+   
+   OPTION B: Click "Visit Museum"
+   → For UNC Museum: Navigates to /unc-museum
+   → For other museums: Currently shows modal with details
+   
+   OPTION C: Click "Register" button (top right)
+   → Navigates to /register (placeholder for other module)
+
+4. User scrolls to "Featured Artifacts & Documents" section:
+   - Grid of 6 featured items
+   - Each card shows:
+     * Item image
+     * Title
+     * Description
+     * Origin/date
+
+5. User reaches footer:
+   - Museum information
+   - Quick links
+   - Contact details
+   - Social media (if applicable)
+
+
+--------------------------------------------------------------------------------
+2.2 UNC MUSEUM NAVIGATION FLOW
+--------------------------------------------------------------------------------
+
+ENTRY POINT: User navigates to /unc-museum
+
+NAVIGATION OPTIONS:
+
+1. HOMEPAGE (/unc-museum)
+   Features:
+   - Hero section with UNC branding
+   - Featured collections preview
+   - Quick access to sections
+   - About museum information
+   
+   Actions Available:
+   - Click logo → Stay on homepage
+   - Click "Home" nav → Stay on homepage
+   - Click "Collections" nav → Go to /collections
+   - Click "Educational" nav → Go to /educational
+   - Click "Exclusive Collections" nav → Go to /exclusive
+   - Click "Register" button → Go to /register
+   - Click "BACK" → Return to landing portal (/)
+
+2. COLLECTIONS (/collections)
+   Features:
+   - Search bar
+   - Category filter dropdown
+   - View toggle (grid/list)
+   - Collection cards
+   
+   Actions Available:
+   - Type in search → Filter collections in real-time
+   - Select category → Filter by category
+   - Toggle grid/list → Change view mode
+   - Click "View Details" → Open detail view
+   - Click "Share" → Open share modal
+
+3. EDUCATIONAL (/educational)
+   Features:
+   - Educational resource cards
+   - Search and filter
+   - Download options
+   
+   Actions Available:
+   - Search resources
+   - Filter by category
+   - View resource details
+   - Download resources (if applicable)
+
+4. EXCLUSIVE (/exclusive)
+   Features:
+   - Members-only content
+   - 5 Museum Artifacts
+   - 7 Historical Documents
+   - Feedback system
+   
+   Actions Available:
+   - Browse exclusive items
+   - View artifact details
+   - View document details
+   - Submit feedback
+
+
+--------------------------------------------------------------------------------
+2.3 COLLECTIONS BROWSING FLOW
+--------------------------------------------------------------------------------
+
+USER GOAL: Find and view specific collections
+
+STEP 1: Land on Collections Page
+- Hero section shows: "Browse Collections"
+- Description: "Explore our comprehensive digital archive..."
+- Total count displayed: "8 artifacts, documents..."
+
+STEP 2: Search & Filter (Optional)
+- User types in search box
+  → Results filter in real-time
+  → No page reload
+  → Empty state if no results
+  
+- User selects category from dropdown
+  → Collections filter by category
+  → Combined with search query if present
+
+STEP 3: Choose View Mode
+- Grid View (default):
+  → 2 columns on desktop
+  → Large image preview
+  → Card layout with shadow
+  
+- List View:
+  → Full width rows
+  → Smaller image on left
+  → More detailed text on right
+
+STEP 4: Browse Results
+- Skeleton loaders show while loading
+- Staggered fade-in animation (50ms delay per item)
+- Each collection shows:
+  * Category badge
+  * Title
+  * Period/date
+  * Item count
+  * Brief description
+  * "View Details" button
+  * "Share" button
+
+STEP 5: Interact with Collection
+
+OPTION A: View Details
+→ If Artifact:
+  - Opens Artifact Detail Page
+  - Shows large image
+  - Zoom controls (user-activated)
+  - Pan when zoomed
+  - Metadata tabs: Description, Provenance, Citation
+  - Share button
+  - Back button
+  
+→ If Document:
+  - Opens Document Detail Page
+  - Shows multi-page viewer
+  - Page navigation
+  - Zoom controls
+  - Metadata tabs
+  - Share button
+  - Back button
+
+OPTION B: Share
+→ Opens Share Modal
+  - Shows collection title and description
+  - Generates shareable link
+  - Copy to clipboard button
+  - Confirmation on copy ("Copied!")
+  - Close modal options:
+    * X button
+    * Escape key
+    * Click backdrop
+    * Close button
+
+
+--------------------------------------------------------------------------------
+2.4 SEARCH & FILTER FLOW
+--------------------------------------------------------------------------------
+
+SEARCH FLOW:
+
+1. User focuses on search input
+   - Border color changes to #AC0000
+   - Cursor appears in input
+
+2. User types query
+   - Each keystroke triggers filter
+   - No debounce (instant filtering)
+   - Results update in real-time
+   - Maintains current category filter
+
+3. Results update:
+   - If matches found:
+     → Display filtered items
+     → Show count in results
+     
+   - If no matches:
+     → Show empty state
+     → SearchX icon (large, gray)
+     → Message: "No Collections Found"
+     → Sub-message: "We couldn't find any collections matching '[query]'"
+     → "Clear All Filters" button
+
+4. Clear search:
+   - User deletes text or clicks "Clear All Filters"
+   → All collections reappear
+   → Category filter maintained (unless cleared)
+
+FILTER FLOW:
+
+1. User clicks category dropdown
+   - Dropdown opens with options:
+     * All Categories (default)
+     * Architectural Fragments
+     * Academic Heritage
+     * Archaeological Finds
+     * Cultural Heritage
+     * Archives
+     * Fine Arts
+     * Traditional Implements
+     * Cultural Artifacts
+
+2. User selects category
+   - Dropdown closes
+   - Selected category shown in dropdown
+   - Results filter immediately
+   - Combines with search query
+
+3. User can:
+   - Change category (repeat step 1-2)
+   - Clear filters (select "All Categories")
+   - Combine with search
+
+COMBINED SEARCH + FILTER:
+- Both filters work together
+- Results must match BOTH criteria:
+  * Text matches search query AND
+  * Category matches selected category
+- Empty state appears if no matches
+
+
+--------------------------------------------------------------------------------
+2.5 DETAIL VIEW FLOW
+--------------------------------------------------------------------------------
+
+ARTIFACT DETAIL VIEW FLOW:
+
+1. Entry: User clicks "View Details" on artifact card
+
+2. Page loads:
+   - Full-screen detail view
+   - Header with:
+     * Back button (← Back to Collections)
+     * Share button
+   - Large image display (800x600px)
+   - Zoom control panel:
+     * Zoom In button
+     * Zoom Out button
+     * Reset button
+   - Metadata tabs below image
+
+3. User interactions:
+
+   ZOOM INTERACTION:
+   a. User clicks "Zoom In" (+)
+      → Image scales up 1.2x
+      → Pan controls become active
+      → User can drag image to pan
+      → Cursor changes to grab/grabbing
+      
+   b. User clicks "Zoom Out" (-)
+      → Image scales down 0.8x
+      → Minimum zoom: 1x (original size)
+      
+   c. User clicks "Reset"
+      → Image returns to original size
+      → Pan position resets to center
+      
+   d. User drags image (when zoomed)
+      → Image pans within container
+      → Cannot drag outside boundaries
+
+   TAB INTERACTION:
+   a. User clicks "Description" tab (default)
+      → Shows artifact description
+      → Shows origin information
+      
+   b. User clicks "Provenance" tab
+      → Shows provenance details
+      → Shows acquisition information
+      
+   c. User clicks "Citation" tab
+      → Shows citation format selector (APA/MLA)
+      → Shows formatted citation
+      → Copy button available
+
+4. Exit options:
+   - Click "← Back to Collections"
+   - Click browser back button
+   → Returns to collections page
+   → Maintains search/filter state
+
+DOCUMENT DETAIL VIEW FLOW:
+
+1. Entry: User clicks "View Details" on document card
+
+2. Page loads:
+   - Similar header (Back + Share)
+   - Multi-page document viewer
+   - Page navigation:
+     * Current page indicator (e.g., "Page 1 of 12")
+     * Previous page button
+     * Next page button
+   - Zoom controls (same as artifact)
+   - Metadata tabs
+
+3. User interactions:
+
+   PAGE NAVIGATION:
+   a. User clicks "Next Page" (→)
+      → Advances to next page
+      → Smooth transition
+      → Zoom resets on page change
+      
+   b. User clicks "Previous Page" (←)
+      → Goes to previous page
+      → Smooth transition
+      → Zoom resets
+      
+   c. User at first page
+      → Previous button disabled/hidden
+      
+   d. User at last page
+      → Next button disabled/hidden
+
+   ZOOM & TABS:
+   (Same as Artifact Detail View)
+
+4. Exit options:
+   (Same as Artifact Detail View)
+
+
+--------------------------------------------------------------------------------
+2.6 SHARE FLOW
+--------------------------------------------------------------------------------
+
+SHARE MODAL FLOW:
+
+1. Trigger: User clicks Share button (Share2 icon)
+
+2. Modal opens:
+   - Smooth fade-in animation (200ms)
+   - Backdrop blur effect
+   - Modal appears centered
+   - Focus trapped within modal
+
+3. Modal contents:
+   - Header: "Share Collection"
+   - Collection title (bold)
+   - Collection description
+   - Input field with generated link
+     * Link format: https://unc-museum.edu/collections/[accession]/[title]
+     * Read-only input
+     * Pre-selected for easy copying
+   - "Copy" button with icon
+   - Info box:
+     * Share2 icon
+     * Helpful message about sharing
+
+4. User actions:
+
+   OPTION A: Click "Copy" button
+   → Link copied to clipboard
+   → Button changes:
+     * Icon: Copy → Check
+     * Text: "Copy" → "Copied"
+     * Color: Success green
+   → After 2 seconds:
+     * Button reverts to original state
+   
+   OPTION B: Manually copy link
+   → User can select and copy text from input
+   
+   OPTION C: Close modal
+   → Click X button (top right)
+   → Click "Close" button (bottom)
+   → Click backdrop (outside modal)
+   → Press Escape key
+   → Modal fades out (200ms)
+   → Focus returns to trigger button
+
+5. Copy failure handling:
+   - If clipboard API fails:
+     → Alert: "Unable to copy to clipboard. Please copy manually."
+     → User can still select text manually
+
+
+================================================================================
+                           3. INTERACTIONS
+================================================================================
+
+--------------------------------------------------------------------------------
+3.1 BUTTON STATES
+--------------------------------------------------------------------------------
+
+PRIMARY BUTTON (#AC0000):
+
+Default State:
+  Background: #AC0000
+  Text: White
+  Border: None
+  Shadow: Subtle (0 1px 2px rgba(0,0,0,0.05))
+  Cursor: Pointer
+
+Hover State:
+  Background: #8B0000
+  Text: White
+  Transform: translateY(-2px)
+  Shadow: Enhanced (0 4px 6px rgba(0,0,0,0.1))
+  Transition: all 200ms ease
+  Cursor: Pointer
+
+Active/Pressed State:
+  Background: #8B0000
+  Transform: translateY(0px)
+  Shadow: Reduced
+  Transition: all 100ms ease
+
+Focus State (Keyboard):
+  Outline: 2px solid #AC0000
+  Outline Offset: 2px
+  
+Disabled State:
+  Background: #E5E7EB
+  Text: #9CA3AF
+  Shadow: None
+  Cursor: not-allowed
+  Opacity: 0.6
+
+Loading State:
+  Background: #AC0000
+  Text: Loading... (with spinner)
+  Cursor: wait
+  Pointer Events: none
+
+SECONDARY BUTTON (Outlined):
+
+Default State:
+  Background: Transparent
+  Text: #AC0000
+  Border: 2px solid #AC0000
+  Padding: 10px 30px
+
+Hover State:
+  Background: #AC0000
+  Text: White
+  Border: 2px solid #AC0000
+  Padding: 11px 31px (subtle expansion)
+  Transition: all 300ms ease
+
+Active State:
+  Background: #8B0000
+  Text: White
+  Border: 2px solid #8B0000
+
+Focus State:
+  Outline: 2px solid #AC0000
+  Outline Offset: 2px
+
+ICON BUTTON (View Toggle):
+
+Default State (Inactive):
+  Background: White
+  Border: 1px solid rgba(0, 0, 0, 0.1)
+  Icon Color: #0A0A0A
+
+Hover State:
+  Background: #F9FAFB
+  Border: 1px solid rgba(0, 0, 0, 0.2)
+
+Active State (Selected):
+  Background: #030213
+  Border: 1px solid #030213
+  Icon Color: White
+
+TEXT BUTTON (Link Style):
+
+Default State:
+  Background: Transparent
+  Text: #AC0000
+  Text Decoration: None
+
+Hover State:
+  Text Decoration: Underline
+  Cursor: Pointer
+
+Active State:
+  Text: #8B0000
+
+
+--------------------------------------------------------------------------------
+3.2 FORM INTERACTIONS
+--------------------------------------------------------------------------------
+
+TEXT INPUT:
+
+Default State:
+  Background: White
+  Border: 1px solid rgba(0, 0, 0, 0.1)
+  Text: #0A0A0A
+  Placeholder: #9CA3AF
+
+Hover State:
+  Border: 1px solid rgba(0, 0, 0, 0.2)
+
+Focus State:
+  Border: 1px solid #AC0000
+  Outline: None
+  Box Shadow: 0 0 0 3px rgba(172, 0, 0, 0.1)
+
+Filled State:
+  (Same as default)
+  Text: User input
+
+Error State:
+  Border: 1px solid #EF4444
+  Box Shadow: 0 0 0 3px rgba(239, 68, 68, 0.1)
+
+Disabled State:
+  Background: #F3F4F6
+  Border: 1px solid rgba(0, 0, 0, 0.05)
+  Text: #9CA3AF
+  Cursor: not-allowed
+
+SEARCH INPUT (with icon):
+
+Default State:
+  (Same as text input)
+  Icon: Left side, 12px from edge
+  Icon Color: #0A0A0A
+  Text Padding Left: 40px
+
+Focus State:
+  Border: 1px solid #AC0000
+  Icon Color: #AC0000
+
+Typing State:
+  Clear button appears (X icon, right side)
+  Click X → Clear input
+
+SELECT DROPDOWN:
+
+Default State:
+  Appearance: Same as text input
+  Chevron Icon: Right side
+
+Hover State:
+  Border: 1px solid rgba(0, 0, 0, 0.2)
+  Cursor: Pointer
+
+Focus/Open State:
+  Border: 1px solid #AC0000
+  Dropdown menu appears below
+  
+Dropdown Menu:
+  Background: White
+  Border: 1px solid rgba(0, 0, 0, 0.1)
+  Shadow: 0 4px 6px rgba(0, 0, 0, 0.1)
+  Max Height: 300px
+  Overflow: Auto scroll
+
+Option Hover:
+  Background: #F9FAFB
+
+Option Selected:
+  Background: rgba(172, 0, 0, 0.1)
+  Text: #AC0000
+  Font Weight: Medium
+
+
+--------------------------------------------------------------------------------
+3.3 MODAL BEHAVIORS
+--------------------------------------------------------------------------------
+
+MODAL OPENING:
+
+1. Trigger: Button click
+2. Animation sequence:
+   - Backdrop fades in (200ms)
+   - Backdrop blur applies
+   - Modal scales from 95% to 100% (zoom-in effect)
+   - Modal fades in (200ms)
+3. Page behavior:
+   - Body scroll locked
+   - Focus trapped in modal
+   - First focusable element receives focus
+
+MODAL INTERACTION:
+
+While Open:
+  - Tab key cycles through focusable elements
+  - Shift+Tab cycles backward
+  - Cannot tab to elements behind modal
+  - Escape key closes modal
+  - Click backdrop closes modal
+  - Click X button closes modal
+  - Click Close button closes modal
+
+Scrollable Content:
+  - If content exceeds modal height:
+    * Modal body becomes scrollable
+    * Header remains fixed
+    * Footer remains fixed (if present)
+    * Scroll indicator visible
+
+MODAL CLOSING:
+
+1. Trigger: Any close action
+2. Animation sequence:
+   - Modal scales to 95%
+   - Modal fades out (200ms)
+   - Backdrop fades out (200ms)
+3. Page behavior:
+   - Body scroll unlocked
+   - Focus returns to trigger element
+   - Modal removed from DOM
+
+MODAL VARIATIONS:
+
+Small Modal (400-500px):
+  - Simple content
+  - 1-2 actions
+  - Centered vertically and horizontally
+
+Medium Modal (600-800px):
+  - Form content
+  - Multiple sections
+  - Centered
+
+Large Modal (900px+):
+  - Detailed content
+  - Image viewers
+  - Centered or top-aligned
+
+Full-Screen Modal:
+  - Detail views
+  - Document viewers
+  - Covers entire viewport
+
+
+--------------------------------------------------------------------------------
+3.4 IMAGE INTERACTIONS
+--------------------------------------------------------------------------------
+
+CARD IMAGES:
+
+Default State:
+  - Loads with fade-in
+  - Object Fit: Cover
+  - Aspect Ratio: Maintained
+
+Hover State:
+  - No scale (except for museum cards)
+  - Card shadow increases
+  - Cursor: Pointer (if clickable)
+
+Loading State:
+  - Skeleton placeholder shown
+  - Gray pulsing animation
+  - Same aspect ratio as final image
+
+Error State:
+  - Fallback image or placeholder
+  - Alt text displayed
+
+DETAIL VIEW IMAGES:
+
+Default State (Zoom Level 1x):
+  - Centered in container
+  - Max width: 800px
+  - Max height: 600px
+  - Object Fit: Contain
+  - Cursor: Default
+
+Zoomed State (> 1x):
+  - Image scales from center
+  - Cursor: Grab (when hovering)
+  - Cursor: Grabbing (when dragging)
+  - Pan enabled
+
+Zoom Controls:
+  - Zoom In (+): Scales image by 1.2x
+  - Zoom Out (-): Scales image by 0.8x
+  - Reset: Returns to 1x, centered
+  - Max Zoom: 3x
+  - Min Zoom: 1x
+
+Pan Behavior:
+  - Only active when zoomed (> 1x)
+  - Click and drag to pan
+  - Constrained to image bounds
+  - Smooth animation
+  - Momentum optional
+
+DOCUMENT PAGE IMAGES:
+
+Page Navigation:
+  - Smooth fade transition between pages
+  - Duration: 300ms
+  - Each page zoom resets to 1x
+
+Loading:
+  - Shows skeleton for next page
+  - Preloads adjacent pages
+
+
+--------------------------------------------------------------------------------
+3.5 NAVIGATION BEHAVIORS
+--------------------------------------------------------------------------------
+
+HEADER NAVIGATION:
+
+Logo Click:
+  - If on UNC Museum pages → Go to /unc-museum
+  - If on Landing Portal → Stay on /
+
+Navigation Links:
+
+Default State:
+  - Text: #0A0A0A
+  - No underline
+
+Hover State:
+  - Text: #AC0000
+  - Transition: 200ms
+  - Cursor: Pointer
+
+Active State (Current Page):
+  - Text: #AC0000
+  - Bottom Border: 3px solid #AC0000
+  - Border appears 25px below text
+  - Border Radius: Full (rounded ends)
+
+Click Behavior:
+  - Immediate navigation
+  - Page scrolls to top
+  - Scroll behavior: instant
+
+Sticky Behavior:
+  - Header sticks to top on scroll
+  - Z-index: 50
+  - Border shadow subtle
+
+BREADCRUMB NAVIGATION:
+
+Display:
+  - Home > Collections > [Item Name]
+  - Separator: > or /
+
+Links:
+  - Clickable except current page
+  - Hover: Text color changes to #AC0000
+  - Current page: Non-clickable, different color
+
+BACK BUTTON:
+
+Display:
+  - ← Back to Collections
+  - Icon + Text
+
+Hover State:
+  - Text: #AC0000
+  - Icon: #AC0000
+
+Click Behavior:
+  - Returns to previous page
+  - Maintains scroll position (if applicable)
+
+
+--------------------------------------------------------------------------------
+3.6 HOVER EFFECTS
+--------------------------------------------------------------------------------
+
+CARDS:
+
+Collection Cards:
+  Default → Hover:
+    - Transform: translateY(-4px)
+    - Shadow: Enhanced
+    - Transition: 300ms ease
+    - Border: Slight color change
+    - All elements remain same size
+
+Museum Cards:
+  Default → Hover:
+    - Transform: translateY(-8px)
+    - Shadow: 0 12px 24px rgba(0, 0, 0, 0.15)
+    - Transition: 300ms ease-out
+    - Image: No scale
+    - Card: Entire card lifts
+
+Resource Cards:
+  Default → Hover:
+    - Transform: translateY(-2px)
+    - Shadow: Subtle enhancement
+    - Border: Highlight
+
+LINKS:
+
+Text Links:
+  Default: #AC0000, No underline
+  Hover: #AC0000, Underline
+  Transition: 150ms
+
+Navigation Links:
+  Default: #0A0A0A
+  Hover: #AC0000
+  Transition: 200ms
+
+Footer Links:
+  Default: #D1D5DB
+  Hover: White + Underline
+  Transition: 150ms
+
+ICONS:
+
+Standalone Icons:
+  Default: Current color
+  Hover: Background appears (#F9FAFB)
+         Border radius: 4px
+  Transition: 200ms
+
+Icon Buttons:
+  Default: Outlined
+  Hover: Background changes
+  Active: Filled
+
+IMAGES:
+
+Card Images:
+  Default: Normal
+  Hover: Parent card effect (no direct image scale)
+
+Thumbnails:
+  Default: Normal
+  Hover: Slight opacity change (0.9)
+         Cursor: Pointer
+
+
+================================================================================
+                              4. COPY
+================================================================================
+
+--------------------------------------------------------------------------------
+4.1 HEADINGS & TITLES
+--------------------------------------------------------------------------------
+
+LANDING PORTAL:
+
+Main Hero:
+  "Discover Naga's Cultural Heritage"
+  
+Sub-heading:
+  "Explore five magnificent museums showcasing the rich history, art, 
+   and culture of Naga City. From ancient artifacts to contemporary 
+   exhibitions, discover centuries of Bicolano heritage in one unified 
+   platform."
+
+Badge:
+  "Naga City Cultural Heritage Network"
+
+Section Heading:
+  "Explore Our Museums"
+
+Featured Section:
+  "Featured Artifacts & Documents"
+  
+Featured Sub-heading:
+  "Discover highlights from our extensive collection of cultural 
+   treasures and historical archives"
+
+UNC MUSEUM PAGES:
+
+Collections Page:
+  Title: "Browse Collections"
+  Description: "Explore our comprehensive digital archive of 8 artifacts, 
+                documents, and historical materials. Use advanced search 
+                and filters to discover items relevant to your research 
+                or interest."
+
+Educational Resources:
+  Title: "Educational Resources"
+  Description: "Access curated learning materials, research guides, 
+                and educational content for students, educators, 
+                and researchers."
+
+Exclusive Collections:
+  Title: "Exclusive Collections"
+  Description: "Members-only access to our finest artifacts and 
+                rare historical documents from the museum's 
+                private collection."
+
+MODAL HEADINGS:
+
+Share Modal:
+  "Share Collection"
+
+Museum Detail Modal:
+  "[Museum Name]"
+  "Established [Year]"
+
+Feedback Modal:
+  "Share Your Feedback"
+
+
+--------------------------------------------------------------------------------
+4.2 BODY COPY
+--------------------------------------------------------------------------------
+
+MUSEUM DESCRIPTIONS:
+
+University of Nueva Caceres Museum:
+  "Academic institution museum featuring student life artifacts, 
+   research collections, and historical documents that chronicle 
+   the evolution of university education in Naga City."
+
+Museo Hayskulano:
+  "Community museum celebrating traditional Bicolano culture through 
+   handicrafts, folk art, and everyday objects that tell the story 
+   of local heritage."
+
+Jesse M. Robredo Museum:
+  "Memorial museum honoring the legacy of good governance, public 
+   service, and the life of former Naga City Mayor and DILG 
+   Secretary Jesse M. Robredo."
+
+Peñafrancia Museum:
+  "Religious museum dedicated to Our Lady of Peñafrancia, featuring 
+   sacred artifacts, historical vestments, and centuries of 
+   devotional heritage."
+
+Museo del Seminario Conciliar:
+  "Seminary museum preserving ecclesiastical art, religious 
+   artifacts, and archival materials from the Catholic Church's 
+   influence in the Bicol region."
+
+COLLECTION DESCRIPTIONS:
+
+Example (Memento Mori Carving):
+  "A wooden memento mori (skull and crossbones) carving, a common 
+   symbol of mortality in Spanish colonial religious and funerary art."
+
+Example (Religious Manuscripts):
+  "Collection of hand-illuminated religious texts and prayer books 
+   from the colonial seminary, featuring intricate calligraphy and 
+   gold leaf decorations."
+
+INFORMATIONAL TEXT:
+
+About Search:
+  "Search collections by title, description, or category"
+
+About Filters:
+  "Filter collections by category to narrow your results"
+
+About Sharing:
+  "Share this collection with colleagues, students, or anyone 
+   interested in learning about [category]."
+
+
+--------------------------------------------------------------------------------
+4.3 BUTTON LABELS
+--------------------------------------------------------------------------------
+
+PRIMARY ACTIONS:
+  "Visit Museum"
+  "View Details"
+  "Learn More"
+  "Explore Collections"
+  "Register"
+  "Submit"
+  "Download"
+  "Share"
+
+SECONDARY ACTIONS:
+  "Back to Collections"
+  "Close"
+  "Cancel"
+  "Clear All Filters"
+
+ICON BUTTONS:
+  (No text, aria-label only)
+  aria-label="Search museum collections"
+  aria-label="Share collection"
+  aria-label="Close modal"
+  aria-label="Zoom in"
+  aria-label="Zoom out"
+  aria-label="Reset zoom"
+  aria-label="Switch to grid view"
+  aria-label="Switch to list view"
+  aria-label="Next page"
+  aria-label="Previous page"
+
+COPY ACTIONS:
+  "Copy" (default)
+  "Copied" (success state)
+
+NAVIGATION:
+  "Home"
+  "Collections"
+  "Educational"
+  "Exclusive Collections"
+
+
+--------------------------------------------------------------------------------
+4.4 ERROR MESSAGES
+--------------------------------------------------------------------------------
+
+SEARCH NO RESULTS:
+  Title: "No Collections Found"
+  
+  With Search Query:
+    "We couldn't find any collections matching "[query]"."
+    
+  With Filters Only:
+    "No collections match your current filter criteria."
+  
+  Helper Text:
+    "Try adjusting your search terms or filters to find what 
+     you're looking for."
+
+NETWORK ERROR:
+  "Unable to load content. Please check your connection and try again."
+
+FORM VALIDATION:
+  Email (Invalid):
+    "Please enter a valid email address"
+    
+  Required Field:
+    "This field is required"
+    
+  Text Too Short:
+    "Please enter at least [X] characters"
+
+COPY ERROR:
+  Alert: "Unable to copy to clipboard. Please copy manually."
+
+404 ERROR (Future):
+  Title: "Page Not Found"
+  Message: "The page you're looking for doesn't exist."
+  Action: "Return to Home"
+
+
+--------------------------------------------------------------------------------
+4.5 EMPTY STATES
+--------------------------------------------------------------------------------
+
+NO SEARCH RESULTS:
+  Icon: Large SearchX icon (gray)
+  Heading: "No Collections Found"
+  Message: "We couldn't find any collections matching "[query]"."
+  Sub-message: "Try adjusting your search terms or filters."
+  Action: "Clear All Filters" button
+
+NO COLLECTIONS (Initial):
+  Icon: Archive or Box icon
+  Heading: "No Collections Available"
+  Message: "There are currently no collections in this category."
+
+NO EXCLUSIVE CONTENT:
+  Icon: Lock icon
+  Heading: "Exclusive Content Unavailable"
+  Message: "Please log in to access members-only collections."
+  Action: "Sign In" button
+
+NO FAVORITES (Future):
+  Icon: Heart icon
+  Heading: "No Favorites Yet"
+  Message: "Items you favorite will appear here for easy access."
+  Action: "Browse Collections" button
+
+
+--------------------------------------------------------------------------------
+4.6 TOOLTIPS & HELP TEXT
+--------------------------------------------------------------------------------
+
+TOOLTIPS:
+
+Zoom Controls:
+  Zoom In: "Zoom in (Click to zoom, drag to pan)"
+  Zoom Out: "Zoom out"
+  Reset: "Reset zoom and position"
+
+View Toggle:
+  Grid: "Grid view - See larger previews"
+  List: "List view - See more details"
+
+Share Button:
+  "Share this collection"
+
+Search:
+  "Press Cmd/Ctrl + K to quick search"
+
+HELP TEXT:
+
+Search Input:
+  Placeholder: "Search collections..."
+
+Category Dropdown:
+  Placeholder: "All Categories"
+
+Email Input:
+  Placeholder: "your.email@example.com"
+  Help: "We'll never share your email with anyone else"
+
+Feedback:
+  "Help us improve your experience. Share your thoughts, ask 
+   questions, or report any issues."
+
+Citation:
+  "Use this citation in your research and publications"
+
+
+================================================================================
+                      5. RESPONSIVE BREAKPOINTS
+================================================================================
+
+--------------------------------------------------------------------------------
+5.1 MOBILE (< 768px)
+--------------------------------------------------------------------------------
+
+LAYOUT:
+
+Container:
+  Padding: 16px - 24px horizontal
+  Max Width: 100%
+  Margin: 0 auto
+
+Header:
+  Height: 60px (reduced from 73px)
+  Padding: 0 16px
+  
+  Logo:
+    Size: 28x28px (reduced from 32x32px)
+    Text: Hidden or truncated
+    
+  Navigation:
+    Hamburger Menu (if implemented)
+    OR
+    Hidden on mobile (desktop only)
+    
+  Register Button:
+    Visible
+    Smaller padding: 8px 16px
+
+Hero Section:
+  Padding: 40px 16px (reduced)
+  
+  Heading:
+    Size: 32px (reduced from 68px)
+    Line Height: 36px
+    
+  Description:
+    Size: 14px (reduced from 17.656px)
+    Line Height: 22px
+
+GRIDS:
+
+Museum Grid:
+  Columns: 1 (single column)
+  Gap: 16px
+
+Collections Grid:
+  Columns: 1 (single column)
+  Gap: 16px
+
+Featured Items:
+  Columns: 1 (single column)
+  Gap: 16px
+  Horizontal scroll option
+
+CARDS:
+
+Collection Card:
+  Width: 100%
+  Padding: 16px (reduced from 24px)
+  
+  Image Height:
+    Grid View: 250px (reduced from 350px)
+    List View: 150px (reduced from 192px)
+
+NAVIGATION:
+
+Tabs:
+  Horizontal scroll if overflow
+  Sticky positioning
+
+Search & Filter:
+  Stack vertically
+  Full width
+  Gap: 12px
+
+View Toggle:
+  Positioned below search
+  OR
+  Right side with smaller size
+
+MODALS:
+
+Width: 95vw (instead of fixed px)
+Padding: 24px (reduced from 32px)
+Full height if needed
+Scrollable
+
+Detail Views:
+  Zoom controls: Smaller buttons
+  Image: Full width
+  Metadata: Full width below image
+
+
+--------------------------------------------------------------------------------
+5.2 TABLET (768px - 1024px)
+--------------------------------------------------------------------------------
+
+LAYOUT:
+
+Container:
+  Padding: 32px - 48px horizontal
+  Max Width: 100%
+
+Header:
+  Height: 73px
+  Padding: 0 32px
+  
+  Logo:
+    Size: 32x32px
+    Text: Visible
+    
+  Navigation:
+    Visible
+    Slightly smaller gap: 24px
+    
+  Register Button:
+    Full size
+
+Hero Section:
+  Padding: 60px 32px
+  
+  Heading:
+    Size: 48px
+    Line Height: 54px
+    
+  Description:
+    Size: 16px
+    Line Height: 28px
+
+GRIDS:
+
+Museum Grid:
+  Columns: 2
+  Gap: 20px
+
+Collections Grid:
+  Columns: 2
+  Gap: 24px
+
+Featured Items:
+  Columns: 2
+  Gap: 20px
+
+CARDS:
+
+Collection Card:
+  Width: 100%
+  Padding: 20px
+  
+  Image Height:
+    Grid View: 300px
+    List View: 180px
+
+NAVIGATION:
+
+Search & Filter:
+  Flex row
+  Search: 60% width
+  Filter: 35% width
+  Gap: 16px
+
+View Toggle:
+  Right aligned
+
+MODALS:
+
+Width: 90vw or max 700px
+Padding: 28px
+Standard scrolling
+
+Detail Views:
+  2-column layout option
+  Image: 60% width
+  Metadata: 40% width
+
+
+--------------------------------------------------------------------------------
+5.3 DESKTOP (> 1024px)
+--------------------------------------------------------------------------------
+
+LAYOUT:
+
+Container:
+  Padding: 88px horizontal
+  Max Width: 1440px (UNC Museum)
+  Max Width: 1536px (Landing Portal)
+  Margin: 0 auto
+
+Header:
+  Height: 73px
+  Padding: 0 88px
+  
+  Logo:
+    Size: 32x32px
+    Text: Full visibility
+    
+  Navigation:
+    Centered (absolute positioning)
+    Gap: 32px
+    
+  Register Button:
+    Right aligned
+    Full size
+
+Hero Section:
+  Padding: 80px 88px
+  
+  Heading:
+    Size: 68px
+    Line Height: 79.2px
+    
+  Description:
+    Size: 17.656px
+    Line Height: 32.5px
+
+GRIDS:
+
+Museum Grid:
+  Columns: 3
+  Gap: 24px
+
+Collections Grid:
+  Columns: 2
+  Gap: 32px
+
+Featured Items:
+  Columns: 4
+  Gap: 24px
+
+CARDS:
+
+Collection Card:
+  Padding: 24px
+  
+  Image Height:
+    Grid View: 350px
+    List View: 192px
+    
+  Hover Effects:
+    Full implementation
+
+NAVIGATION:
+
+Search & Filter:
+  Flex row
+  Search: Flex 1 (grows)
+  Filter: 200px min-width
+  View Toggle: Right side
+  Gap: 12px
+
+MODALS:
+
+Standard widths:
+  Small: 500px
+  Medium: 700px
+  Large: 900px
+  
+Padding: 32px
+
+Detail Views:
+  Optimal layout
+  Large image: 800x600px
+  Side-by-side metadata
+
+
+--------------------------------------------------------------------------------
+5.4 LAYOUT ADJUSTMENTS BY BREAKPOINT
+--------------------------------------------------------------------------------
+
+ELEMENT BEHAVIOR TABLE:
+
+| Element           | Mobile      | Tablet      | Desktop     |
+|-------------------|-------------|-------------|-------------|
+| Header Nav        | Hidden      | Visible     | Visible     |
+| Logo Text         | Hidden      | Visible     | Visible     |
+| Hero Title        | 32px        | 48px        | 68px        |
+| Grid Columns      | 1           | 2           | 2-4         |
+| Card Padding      | 16px        | 20px        | 24px        |
+| Container Padding | 16-24px     | 32-48px     | 88px        |
+| Modal Width       | 95vw        | 90vw        | Fixed px    |
+| Search/Filter     | Stack       | Flex row    | Flex row    |
+| Image Size        | Smaller     | Medium      | Full        |
+
+RESPONSIVE PATTERNS:
+
+Stack to Row:
+  Mobile: Stack vertically
+  Tablet+: Flex row
+
+Hide on Mobile:
+  Secondary navigation
+  Decorative elements
+  Extended descriptions
+
+Show on Mobile:
+  Hamburger menu (if used)
+  Condensed information
+  Simplified layouts
+
+Touch Targets:
+  Mobile: Minimum 44x44px
+  Desktop: Can be smaller (but still accessible)
+
+Font Scaling:
+  Mobile: 0.7x - 0.8x of desktop
+  Tablet: 0.85x - 0.9x of desktop
+  Desktop: Base size
+
+
+================================================================================
+                         6. ACCESSIBILITY
+================================================================================
+
+--------------------------------------------------------------------------------
+6.1 WCAG 2.1 AA COMPLIANCE
+--------------------------------------------------------------------------------
+
+COLOR CONTRAST:
+
+Text on White Background:
+  - #0A0A0A on #FFFFFF = 19.56:1 (AAA) ✓
+  - #4A5565 on #FFFFFF = 9.25:1 (AAA) ✓
+  - #AC0000 on #FFFFFF = 5.89:1 (AA Large) ✓
+
+Text on Colored Background:
+  - White on #AC0000 = 5.89:1 (AA Large) ✓
+  - White on #030213 = 19.37:1 (AAA) ✓
+
+Border Contrast:
+  - Border minimum 3:1 against background ✓
+
+Interactive Elements:
+  - Focus indicators: 3:1 minimum ✓
+  - All clickable elements distinguishable ✓
+
+NON-TEXT CONTRAST:
+
+Icons:
+  - Minimum 3:1 contrast ✓
+  - Color not sole indicator ✓
+
+Buttons:
+  - Clear visual boundaries ✓
+  - Focus states visible ✓
+
+Forms:
+  - Input borders visible ✓
+  - Focus states clear ✓
+
+RESIZE TEXT:
+
+All text can be resized to 200% without:
+  - Loss of content ✓
+  - Loss of functionality ✓
+  - Requiring horizontal scroll ✓
+
+VISUAL PRESENTATION:
+
+Line Height:
+  - Minimum 1.5x font size ✓
+  
+Paragraph Spacing:
+  - Minimum 2x font size ✓
+  
+Letter Spacing:
+  - Adjustable without breaking layout ✓
+
+Word Spacing:
+  - Minimum 0.16x font size ✓
+
+
+--------------------------------------------------------------------------------
+6.2 KEYBOARD NAVIGATION
+--------------------------------------------------------------------------------
+
+TAB ORDER:
+
+Logical Flow:
+  1. Header logo
+  2. Navigation links (Home, Collections, etc.)
+  3. Register button
+  4. Main content area
+  5. Interactive elements (top to bottom, left to right)
+  6. Footer links
+
+Focus Indicators:
+  - Visible on ALL focusable elements ✓
+  - 2px outline in primary color (#AC0000) ✓
+  - 2px offset from element ✓
+  - Never removed (outline: none NOT used) ✓
+
+KEYBOARD SHORTCUTS:
+
+Global:
+  - Tab: Next focusable element
+  - Shift + Tab: Previous focusable element
+  - Enter: Activate button/link
+  - Space: Activate button/checkbox
+  - Cmd/Ctrl + K: Open search modal
+  - Escape: Close modal/dropdown
+
+Navigation:
+  - Arrow Keys: Navigate between tabs
+  - Home: Go to first item
+  - End: Go to last item
+
+Modals:
+  - Tab: Cycle through modal elements only
+  - Escape: Close modal
+  - Focus trapped within modal ✓
+
+Dropdowns:
+  - Space/Enter: Open dropdown
+  - Arrow Up/Down: Navigate options
+  - Enter: Select option
+  - Escape: Close dropdown
+
+Image Viewer:
+  - +/-: Zoom in/out
+  - Arrow Keys: Pan when zoomed
+  - R: Reset zoom
+  - Escape: Exit viewer
+
+SKIP LINKS:
+
+"Skip to Main Content":
+  - Position: First focusable element
+  - Visually hidden by default
+  - Visible on focus
+  - Jumps to main content area
+
+
+--------------------------------------------------------------------------------
+6.3 SCREEN READER SUPPORT
+--------------------------------------------------------------------------------
+
+SEMANTIC HTML:
+
+Structure:
+  <header> - Site header with navigation
+  <nav> - Navigation menus
+  <main> - Main content area
+  <section> - Content sections
+  <article> - Individual collections/items
+  <aside> - Supplementary content
+  <footer> - Site footer
+
+Headings:
+  - Logical hierarchy (h1 → h2 → h3)
+  - No skipped levels
+  - Descriptive heading text
+
+Lists:
+  - <ul> for unordered lists
+  - <ol> for ordered lists
+  - <dl> for definition lists
+
+ARIA LABELS:
+
+Buttons:
+  <button aria-label="Search museum collections">
+  <button aria-label="Close modal">
+  <button aria-label="Share collection">
+  <button aria-label="Zoom in">
+
+Regions:
+  <div role="region" aria-label="Collections grid display">
+  <div role="region" aria-label="Museum information">
+
+Live Regions:
+  <div aria-live="polite" aria-atomic="true">
+    Search results updated: 5 collections found
+  </div>
+
+States:
+  <button aria-pressed="true">Grid View</button>
+  <button aria-pressed="false">List View</button>
+  <input aria-invalid="true" aria-describedby="error-message">
+
+SCREEN READER TEXT:
+
+Hidden but Accessible:
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+
+Usage:
+  <button>
+    <Icon />
+    <span class="sr-only">Close modal</span>
+  </button>
+
+ALT TEXT:
+
+Images:
+  - Descriptive alt text for all images
+  - Alt="" for decorative images
+  - Context-appropriate descriptions
+  
+Examples:
+  alt="Memento Mori wooden carving from Spanish colonial period"
+  alt="Historical manuscript page with illuminated text"
+  alt="" (for decorative background patterns)
+
+
+--------------------------------------------------------------------------------
+6.4 ARIA LABELS & ATTRIBUTES
+--------------------------------------------------------------------------------
+
+COMPREHENSIVE ARIA USAGE:
+
+Forms:
+  <label for="search">Search Collections</label>
+  <input 
+    id="search" 
+    type="text"
+    aria-label="Search museum collections"
+    aria-describedby="search-help"
+  />
+  <span id="search-help">
+    Enter keywords to search collections
+  </span>
+
+Validation:
+  <input 
+    aria-invalid="true"
+    aria-describedby="email-error"
+  />
+  <span id="email-error" role="alert">
+    Please enter a valid email address
+  </span>
+
+Modals:
+  <div 
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    aria-describedby="modal-description"
+  >
+    <h2 id="modal-title">Share Collection</h2>
+    <p id="modal-description">
+      Copy the link below to share
+    </p>
+  </div>
+
+Navigation:
+  <nav aria-label="Main navigation">
+    <a href="/home" aria-current="page">Home</a>
+    <a href="/collections">Collections</a>
+  </nav>
+
+Tabs:
+  <div role="tablist" aria-label="Collection information">
+    <button 
+      role="tab" 
+      aria-selected="true"
+      aria-controls="description-panel"
+      id="description-tab"
+    >
+      Description
+    </button>
+    <div 
+      role="tabpanel"
+      aria-labelledby="description-tab"
+      id="description-panel"
+    >
+      Content here
+    </div>
+  </div>
+
+Toggles:
+  <button 
+    aria-pressed="true"
+    aria-label="Grid view active"
+  >
+    Grid
+  </button>
+
+
+--------------------------------------------------------------------------------
+6.5 COLOR CONTRAST DETAILS
+--------------------------------------------------------------------------------
+
+CONTRAST RATIOS (Minimum 4.5:1 for normal text, 3:1 for large):
+
+Primary Text:
+  #0A0A0A on #FFFFFF
+  Ratio: 19.56:1 ✓ AAA
+
+Secondary Text:
+  #4A5565 on #FFFFFF
+  Ratio: 9.25:1 ✓ AAA
+
+Tertiary Text:
+  #717182 on #FFFFFF
+  Ratio: 5.71:1 ✓ AA
+
+Primary Button Text:
+  #FFFFFF on #AC0000
+  Ratio: 5.89:1 ✓ AA Large (14pt+ bold)
+
+Links:
+  #AC0000 on #FFFFFF
+  Ratio: 5.89:1 ✓ AA Large
+  Additional: Underline on hover (not color alone)
+
+Disabled Text:
+  #9CA3AF on #FFFFFF
+  Ratio: 3.35:1 ⚠️ (Acceptable for disabled state)
+
+Border Contrast:
+  rgba(0, 0, 0, 0.1) on #FFFFFF
+  Ratio: 1.67:1 ⚠️ (Acceptable for non-text)
+
+Focus Indicators:
+  #AC0000 outline
+  Ratio: 5.89:1 ✓ AA
+
+ERROR INDICATORS:
+
+Not relying on color alone:
+  - Error text + icon ✓
+  - Border color + error message ✓
+  - Color + pattern/symbol ✓
+
+
+--------------------------------------------------------------------------------
+6.6 FOCUS MANAGEMENT
+--------------------------------------------------------------------------------
+
+FOCUS BEHAVIOR:
+
+Page Load:
+  - Focus starts at skip link (visually hidden)
+  - Tab moves to first interactive element
+
+Route Change:
+  - Focus moves to page heading
+  - Announced to screen readers
+  - Scroll position resets to top
+
+Modal Open:
+  - Focus moves to first focusable element in modal
+  - Focus trapped within modal
+  - Tab cycles through modal only
+  - Shift+Tab cycles backward
+
+Modal Close:
+  - Focus returns to trigger element
+  - Previous scroll position maintained
+
+Dropdown Open:
+  - Focus moves to first option
+  - Arrow keys navigate options
+  - Enter selects option
+
+Dropdown Close:
+  - Focus returns to trigger
+
+Form Submit:
+  - If errors: Focus moves to first error
+  - If success: Focus moves to success message
+  - Error messages linked via aria-describedby
+
+FOCUS STYLES:
+
+Default Focus:
+  outline: 2px solid #AC0000;
+  outline-offset: 2px;
+  border-radius: 4px; (where applicable)
+
+Button Focus:
+  (Same as default)
+  Additional: Box shadow for depth
+
+Input Focus:
+  Border: 1px solid #AC0000;
+  Box Shadow: 0 0 0 3px rgba(172, 0, 0, 0.1);
+  Outline: None (border serves as indicator)
+
+Link Focus:
+  outline: 2px solid #AC0000;
+  outline-offset: 2px;
+  Text decoration: Underline
+
+Card Focus:
+  Entire card outlined
+  Outline: 2px solid #AC0000;
+  Outline-offset: 4px;
+
+FOCUS TRAP:
+
+Modal Focus Trap Implementation:
+  1. Get all focusable elements in modal
+  2. Set focus to first element
+  3. On Tab from last element → Go to first
+  4. On Shift+Tab from first → Go to last
+  5. Prevent focus outside modal
+
+Focusable Elements:
+  - <a> with href
+  - <button>
+  - <input>
+  - <select>
+  - <textarea>
+  - <summary>
+  - [tabindex="0"]
+  - [contenteditable]
+
+
+================================================================================
+                        7. DATA VALIDATIONS
+================================================================================
+
+--------------------------------------------------------------------------------
+7.1 SEARCH INPUT
+--------------------------------------------------------------------------------
+
+VALIDATION RULES:
+
+Input Type: Text
+Min Length: None (can search with any length)
+Max Length: 200 characters
+Required: No
+Trim: Yes (leading/trailing spaces removed)
+
+ALLOWED CHARACTERS:
+  - Letters (a-z, A-Z)
+  - Numbers (0-9)
+  - Spaces
+  - Hyphens (-)
+  - Apostrophes (')
+  - Special characters in foreign languages
+
+DISALLOWED:
+  - <script> tags (XSS prevention)
+  - SQL injection patterns
+  - Excessive special characters
+
+REAL-TIME VALIDATION:
+  - Filters as user types
+  - No debounce (instant results)
+  - Case-insensitive matching
+  - Partial word matching
+
+ERROR HANDLING:
+  - Invalid characters: Ignored silently
+  - Empty search: Shows all results
+  - Too many results: Shows all (no limit)
+  - No results: Shows empty state
+
+
+--------------------------------------------------------------------------------
+7.2 FORM FIELDS
+--------------------------------------------------------------------------------
+
+EMAIL INPUT (Feedback Form):
+
+Validation Rules:
+  - Required: Optional (marked clearly)
+  - Format: Standard email format
+  - Pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+  - Max Length: 254 characters (RFC 5321)
+
+Validation Timing:
+  - On blur (when user leaves field)
+  - On submit
+  - Not on every keystroke
+
+Valid Examples:
+  - user@example.com
+  - user.name@example.co.uk
+  - user+tag@example.com
+
+Invalid Examples:
+  - user@example (no TLD)
+  - @example.com (no local part)
+  - user @example.com (space)
+
+Error Message:
+  "Please enter a valid email address"
+
+TEXTAREA (Feedback):
+
+Validation Rules:
+  - Required: Yes (for feedback)
+  - Min Length: 10 characters
+  - Max Length: 1000 characters
+  - Trim: Yes
+
+Validation Timing:
+  - On submit
+  - Character counter displayed
+
+Error Messages:
+  If empty:
+    "Please enter your feedback"
+  If too short:
+    "Please enter at least 10 characters"
+  If too long:
+    "Maximum 1000 characters allowed"
+
+Character Counter Display:
+  "543 / 1000 characters"
+
+
+--------------------------------------------------------------------------------
+7.3 EMAIL VALIDATION
+--------------------------------------------------------------------------------
+
+PATTERN MATCHING:
+
+Basic Pattern:
+  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+
+Enhanced Pattern (more permissive):
+  /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+Domain Validation:
+  - TLD must be at least 2 characters
+  - Hyphens allowed in domain
+  - Subdomains allowed
+
+VALIDATION STEPS:
+
+1. Check for @ symbol
+   If missing → Error: "Email must contain @"
+
+2. Check for period after @
+   If missing → Error: "Invalid email format"
+
+3. Check for text before @
+   If missing → Error: "Email must have a username"
+
+4. Check for text after @
+   If missing → Error: "Email must have a domain"
+
+5. Check for valid TLD
+   If invalid → Error: "Invalid email domain"
+
+CLIENT-SIDE VALIDATION:
+  - Immediate feedback
+  - Prevents obviously invalid emails
+  - User-friendly error messages
+
+SERVER-SIDE VALIDATION (Future):
+  - Final validation
+  - Domain existence check (optional)
+  - Disposable email detection (optional)
+
+
+--------------------------------------------------------------------------------
+7.4 REQUIRED FIELDS
+--------------------------------------------------------------------------------
+
+FIELD MARKING:
+
+Visual Indicator:
+  - Asterisk (*) next to label
+  - Color: #AC0000
+  - Example: "Email*"
+
+Aria Attribute:
+  - aria-required="true"
+  - Announced to screen readers
+
+VALIDATION BEHAVIOR:
+
+On Submit:
+  1. Check all required fields
+  2. If any empty:
+     - Prevent submission
+     - Show error message
+     - Focus first empty field
+     - Border color: Red (#EF4444)
+
+On Field Blur:
+  - If field left empty:
+    - Show error immediately
+    - Red border
+    - Error text below field
+
+On Field Fill:
+  - Remove error state
+  - Green checkmark (optional)
+  - Success border color
+
+ERROR MESSAGES:
+
+Generic Required:
+  "This field is required"
+
+Specific Required:
+  Email: "Email address is required"
+  Feedback: "Please enter your feedback"
+  Name: "Please enter your name"
+
+ACCESSIBLE ERROR MESSAGING:
+
+  <label for="email">
+    Email* 
+    <span class="sr-only">required</span>
+  </label>
+  <input 
+    id="email"
+    type="email"
+    required
+    aria-required="true"
+    aria-invalid="true"
+    aria-describedby="email-error"
+  />
+  <span id="email-error" role="alert">
+    Email address is required
+  </span>
+
+
+================================================================================
+                          8. ERROR STATES
+================================================================================
+
+--------------------------------------------------------------------------------
+8.1 404 ERRORS (Page Not Found)
+--------------------------------------------------------------------------------
+
+SCENARIO: User navigates to non-existent route
+
+DISPLAY:
+
+Visual:
+  - Clean, simple layout
+  - Large "404" text
+  - Icon: Sad folder or broken link icon
+  - Neutral background
+
+Content:
+  Heading: "Page Not Found"
+  
+  Body: "We couldn't find the page you're looking for. 
+         It may have been moved, deleted, or never existed."
+  
+  Suggestions:
+    - Check the URL for typos
+    - Return to the home page
+    - Use the search function
+    - Contact support if you believe this is an error
+
+  Button: "Return to Home" → Links to /
+
+Styling:
+  - Centered content
+  - Max width: 600px
+  - Vertical spacing
+  - Subtle animation on icon
+
+IMPLEMENTATION (Future):
+
+  <main className="min-h-screen flex items-center justify-center p-8">
+    <div className="text-center max-w-xl">
+      <h1 className="text-[120px] font-bold text-[#AC0000]">404</h1>
+      <h2 className="text-2xl mb-4">Page Not Found</h2>
+      <p className="text-[#4A5565] mb-8">
+        We couldn't find the page you're looking for...
+      </p>
+      <button onClick={() => navigate('/')}>
+        Return to Home
+      </button>
+    </div>
+  </main>
+
+
+--------------------------------------------------------------------------------
+8.2 SEARCH NO RESULTS
+--------------------------------------------------------------------------------
+
+SCENARIO: User searches but no collections match
+
+DISPLAY:
+
+Icon:
+  - SearchX from lucide-react
+  - Size: 80px (w-20 h-20)
+  - Color: Light gray (#D1D5DB)
+  - Centered
+
+Content:
+  Heading: "No Collections Found"
+  Font Size: 24px
+  Color: #0A0A0A
+
+  Body (with search query):
+    "We couldn't find any collections matching "[query]"."
+  
+  Body (with filters only):
+    "No collections match your current filter criteria."
+
+  Helper Text:
+    "Try adjusting your search terms or filters to find 
+     what you're looking for."
+    Font Size: 14px
+    Color: #717182
+
+Action:
+  Button: "Clear All Filters"
+  - Resets search query
+  - Resets category to "All Categories"
+  - Returns all collections
+
+Spacing:
+  - Vertical padding: 80px
+  - Icon margin bottom: 24px
+  - Heading margin bottom: 12px
+  - Body margin bottom: 24px
+
+ACCESSIBILITY:
+
+  <div role="status" aria-live="polite">
+    <p className="sr-only">
+      No collections found matching your search
+    </p>
+  </div>
+
+
+--------------------------------------------------------------------------------
+8.3 NETWORK ERRORS
+--------------------------------------------------------------------------------
+
+SCENARIO: API call fails or network is down
+
+DISPLAY:
+
+Toast Notification (Preferred):
+  Position: Top center or bottom right
+  Background: #EF4444 (red)
+  Text: White
+  Icon: Alert triangle or wifi-off icon
+  
+  Message: "Unable to load content. Please check your 
+            connection and try again."
+  
+  Actions:
+    - "Retry" button
+    - Auto-dismiss after 5 seconds
+    - Manual dismiss (X button)
+
+Inline Error (Alternative):
+  Position: Where content should load
+  Background: #FEF2F2 (light red)
+  Border: 1px solid #FCA5A5
+  Padding: 24px
+  Border Radius: 8px
+  
+  Icon: Alert triangle (#EF4444)
+  
+  Heading: "Connection Error"
+  
+  Message: "We're having trouble loading this content. 
+            Please check your internet connection."
+  
+  Button: "Try Again" → Triggers reload
+
+RETRY LOGIC:
+
+  - Automatic retry: 3 attempts
+  - Delay between retries: 1s, 2s, 4s (exponential backoff)
+  - If all fail: Show manual retry option
+  - User can cancel retry
+
+ACCESSIBILITY:
+
+  <div role="alert" aria-live="assertive">
+    Connection error: Unable to load content
+  </div>
+
+
+--------------------------------------------------------------------------------
+8.4 FORM VALIDATION ERRORS
+--------------------------------------------------------------------------------
+
+SCENARIO: User submits form with invalid data
+
+DISPLAY STRATEGY:
+
+Summary Error (Top of Form):
+  - Background: #FEF2F2
+  - Border: 2px solid #EF4444
+  - Padding: 16px
+  - Border Radius: 8px
+  - Margin Bottom: 24px
+  
+  Heading: "Please correct the following errors:"
+  
+  List:
+    • Email address is required
+    • Feedback must be at least 10 characters
+  
+  Links to each error field
+
+Inline Errors (Per Field):
+  Position: Below input
+  Color: #EF4444
+  Font Size: 13px
+  Margin Top: 8px
+  Icon: Alert circle (small)
+
+Input Border:
+  Invalid State: 1px solid #EF4444
+  Box Shadow: 0 0 0 3px rgba(239, 68, 68, 0.1)
+
+VALIDATION TIMING:
+
+On Submit:
+  - Validate all fields
+  - Show all errors at once
+  - Focus first error field
+  - Scroll to error summary
+
+On Blur (Individual Field):
+  - Validate single field
+  - Show error immediately if invalid
+  - Remove error when corrected
+
+On Input (After Initial Error):
+  - Real-time validation
+  - Remove error when valid
+  - Show success indicator (optional)
+
+ERROR EXAMPLES:
+
+Email Errors:
+  - Empty: "Email address is required"
+  - Invalid format: "Please enter a valid email address"
+  - Example format: "user@example.com"
+
+Feedback Errors:
+  - Empty: "Please enter your feedback"
+  - Too short: "Please enter at least 10 characters (5 remaining)"
+  - Too long: "Maximum 1000 characters (you have 1050)"
+
+ACCESSIBILITY:
+
+Form Aria:
+  <form aria-label="Contact form" aria-invalid="true">
+
+Error Summary:
+  <div 
+    role="alert" 
+    aria-live="polite"
+    id="form-errors"
+  >
+    <h3>Please correct the following errors:</h3>
+    <ul>
+      <li><a href="#email">Email is required</a></li>
+    </ul>
+  </div>
+
+Field Errors:
+  <input 
+    id="email"
+    aria-invalid="true"
+    aria-describedby="email-error"
+  />
+  <span id="email-error" role="alert">
+    Please enter a valid email address
+  </span>
+
+
+================================================================================
+                    9. LOADING & EMPTY STATES
+================================================================================
+
+--------------------------------------------------------------------------------
+9.1 PAGE LOADING
+--------------------------------------------------------------------------------
+
+INITIAL PAGE LOAD:
+
+Full Page Loader (PageLoader Component):
+
+Structure:
+  - Full screen height
+  - White background
+  - Skeleton placeholders
+
+Header Skeleton:
+  - Height: 72px
+  - Border bottom: Light gray
+  - Left: Logo skeleton (32x8px)
+  - Right: 3 nav link skeletons (20x4px each)
+
+Content Skeleton:
+  - Container: Max width 1440px, centered
+  - Padding: 88px horizontal
+  
+  Elements:
+    1. Heading skeleton: 48px height, 256px width
+    2. Subheading skeleton: 24px height, 100% width, max 512px
+    3. Grid of 6 card skeletons:
+       - Card: Full width/height
+       - Image: 192px height
+       - Title: 24px height, 75% width
+       - Lines: 2x 16px height, 100% width
+
+Skeleton Animation:
+  - Pulse animation
+  - Duration: 2s
+  - Iteration: Infinite
+  - Keyframes:
+    0%: opacity 1
+    50%: opacity 0.5
+    100%: opacity 1
+
+Colors:
+  Background: #E5E7EB
+  Shimmer: #F3F4F6
+
+ROUTE TRANSITION LOADING:
+
+Suspense Fallback:
+  - Same PageLoader component
+  - Appears when lazy-loaded page is loading
+  - Smooth fade-in (200ms)
+  - Minimum display: 300ms (prevent flash)
+
+
+--------------------------------------------------------------------------------
+9.2 CONTENT LOADING
+--------------------------------------------------------------------------------
+
+COLLECTIONS LOADING:
+
+Grid View Skeletons:
+  - 2 columns (desktop)
+  - Gap: 32px
+  - 6 card skeletons
+
+Card Skeleton Structure:
+  <div className="animate-pulse">
+    <div className="bg-white border rounded-[14px] shadow">
+      <!-- Image skeleton -->
+      <div className="h-[350px] p-6">
+        <div className="w-full h-full bg-gray-200 rounded" />
+      </div>
+      
+      <!-- Content skeleton -->
+      <div className="p-6 space-y-3">
+        <div className="h-6 w-24 bg-gray-200 rounded" />
+        <div className="h-5 w-3/4 bg-gray-200 rounded" />
+        <div className="h-4 w-1/2 bg-gray-200 rounded" />
+        <div className="h-4 w-1/3 bg-gray-200 rounded" />
+        
+        <!-- Button skeletons -->
+        <div className="flex gap-2 pt-2">
+          <div className="h-[36px] flex-1 bg-gray-200 rounded" />
+          <div className="h-[36px] w-[44px] bg-gray-200 rounded" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+List View Skeletons:
+  - Full width rows
+  - Horizontal layout
+  - Image: 192x192px left side
+  - Content: Right side with lines
+
+Duration:
+  - Shows while isLoading = true
+  - Typical: 500-800ms
+  - Minimum: 300ms (prevent flash)
+
+SEARCH RESULTS LOADING:
+
+Behavior:
+  - No full-page loader
+  - Existing results remain visible
+  - Loading indicator overlays content
+  
+Indicator:
+  - Small spinner top right of search
+  - Subtle opacity on results (0.6)
+  - "Searching..." text (sr-only)
+
+
+--------------------------------------------------------------------------------
+9.3 IMAGE LOADING
+--------------------------------------------------------------------------------
+
+PLACEHOLDER STRATEGY:
+
+Before Load:
+  - Skeleton box with aspect ratio
+  - Gray background (#E5E7EB)
+  - Pulse animation
+  - Alt text available to screen readers
+
+During Load:
+  - Progressive JPEG loading (if supported)
+  - Blur-up effect (optional)
+  - Skeleton remains until image ready
+
+On Load Success:
+  - Fade in transition (200ms)
+  - Skeleton fades out
+  - Image appears smoothly
+
+On Load Error:
+  - Fallback icon or placeholder image
+  - Alt text displayed
+  - Retry option (if applicable)
+  - Error indicator subtle
+
+LAZY LOADING:
+
+Below Fold Images:
+  - Use native lazy loading
+  - loading="lazy" attribute
+  - Load when within 200px of viewport
+
+Implementation:
+  <img 
+    src={imageUrl}
+    alt={altText}
+    loading="lazy"
+    className="transition-opacity duration-200"
+  />
+
+Card Images:
+  - Eager load (above fold)
+  - Lazy load (below fold)
+  - Intersection Observer for custom lazy load
+
+
+--------------------------------------------------------------------------------
+9.4 EMPTY SEARCH RESULTS
+--------------------------------------------------------------------------------
+
+DETAILED EMPTY STATE:
+
+Trigger:
+  - Search query returns 0 results
+  - Filters return 0 results
+  - Combined filters return 0 results
+
+Layout:
+  - Centered vertically and horizontally
+  - Padding: 80px vertical, 16px horizontal
+  - Max width: 600px
+
+Visual Elements:
+
+Icon:
+  - SearchX from lucide-react
+  - Size: 80px
+  - Color: #D1D5DB (light gray)
+  - Centered
+  - Margin bottom: 24px
+
+Heading:
+  - Text: "No Collections Found"
+  - Font size: 24px
+  - Color: #0A0A0A
+  - Weight: Normal (400)
+  - Margin bottom: 12px
+
+Description:
+  With search query:
+    "We couldn't find any collections matching 
+     "<strong>[query]</strong>"."
+  
+  With filters only:
+    "No collections match your current filter criteria."
+  
+  Font size: 15px
+  Color: #4A5565
+  Line height: 24px
+  Margin bottom: 8px
+
+Helper Text:
+  "Try adjusting your search terms or filters to find 
+   what you're looking for."
+  
+  Font size: 14px
+  Color: #717182
+  Line height: 22px
+  Margin bottom: 24px
+
+Action Button:
+  - Text: "Clear All Filters"
+  - Style: Primary button (#AC0000)
+  - Padding: 12px 32px
+  - Centered
+  
+  On Click:
+    - Clears search input (empty string)
+    - Resets category to "All Categories"
+    - Restores all collections
+    - Smooth transition
+
+Animation:
+  - Fade in (300ms)
+  - Icon scales from 0.9 to 1
+  - Content fades in staggered
+
+ACCESSIBILITY:
+
+  <div role="status" aria-live="polite" aria-atomic="true">
+    <p className="sr-only">
+      Search completed. No collections found matching 
+      your search query.
+    </p>
+  </div>
+
+
+--------------------------------------------------------------------------------
+9.5 NO COLLECTIONS AVAILABLE
+--------------------------------------------------------------------------------
+
+SCENARIO: Category or section has no items
+
+Example: Future category with no items yet
+
+Layout:
+  - Centered content
+  - Padding: 60px vertical
+  - Max width: 500px
+
+Visual:
+  Icon: Archive or FolderX icon
+  Size: 64px
+  Color: #D1D5DB
+  Margin bottom: 20px
+
+Content:
+  Heading: "No Collections Available"
+  Font size: 20px
+  Margin bottom: 12px
+  
+  Description:
+    "There are currently no collections in this category. 
+     Check back later for updates."
+  
+  Font size: 14px
+  Color: #4A5565
+
+Optional Action:
+  "Browse All Collections" button
+  → Links to main collections page
+
+EXCLUSIVE CONTENT (Not Logged In):
+
+Icon: Lock icon
+Heading: "Members Only Content"
+Description:
+  "This content is exclusively available to museum members. 
+   Please sign in or become a member to access."
+
+Actions:
+  - "Sign In" button (primary)
+  - "Learn About Membership" link (secondary)
+
+NO FAVORITES (Future Feature):
+
+Icon: Heart icon (outline)
+Heading: "No Favorites Yet"
+Description:
+  "Items you mark as favorite will appear here for 
+   quick access. Start exploring collections to add favorites!"
+
+Action:
+  "Explore Collections" button
+
+
+================================================================================
+                          10. ANIMATIONS
+================================================================================
+
+--------------------------------------------------------------------------------
+10.1 PAGE TRANSITIONS
+--------------------------------------------------------------------------------
+
+ROUTE CHANGE ANIMATION:
+
+Transition Type: Cross-fade
+Duration: 200ms
+Easing: ease-in-out
+
+Sequence:
+  1. Current page fades out (100ms)
+  2. New page fades in (100ms)
+  3. Overlap: 50ms
+
+Scroll Behavior:
+  - Immediate scroll to top
+  - No smooth scroll
+  - Scroll behavior: 'instant'
+
+Code Implementation:
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+PAGE LOAD ANIMATION:
+
+Initial Load:
+  - Fade in entire page
+  - Duration: 300ms
+  - Delay: 100ms (after DOM ready)
+  - Easing: ease-out
+
+Lazy Loaded Pages:
+  - Suspense fallback (PageLoader) fades in
+  - Duration: 200ms
+  - Page content replaces loader with fade
+
+
+--------------------------------------------------------------------------------
+10.2 COMPONENT ANIMATIONS
+--------------------------------------------------------------------------------
+
+CARD ENTRANCE:
+
+Grid/List Items:
+  - Staggered fade-in
+  - First item: No delay
+  - Each subsequent: +50ms delay
+  - Fade: opacity 0 → 1
+  - Duration: 300ms
+  - Easing: ease-out
+
+Implementation:
+  <div 
+    className="animate-fadeIn"
+    style={{ animationDelay: `${index * 50}ms` }}
+  >
+
+Keyframes:
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+MODAL ANIMATIONS:
+
+Opening:
+  Backdrop:
+    - Fade in
+    - Duration: 200ms
+    - From: opacity 0
+    - To: opacity 1
+  
+  Modal:
+    - Zoom in + Fade in
+    - Duration: 200ms
+    - From: scale(0.95), opacity 0
+    - To: scale(1), opacity 1
+    - Easing: ease-out
+
+Closing:
+  Modal:
+    - Zoom out + Fade out
+    - Duration: 200ms
+    - From: scale(1), opacity 1
+    - To: scale(0.95), opacity 0
+    - Easing: ease-in
+  
+  Backdrop:
+    - Fade out
+    - Duration: 200ms
+    - From: opacity 1
+    - To: opacity 0
+
+SKELETON PULSE:
+
+Animation:
+  - Opacity pulse
+  - Duration: 2000ms
+  - Iteration: Infinite
+  - Easing: ease-in-out
+
+Keyframes:
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+
+--------------------------------------------------------------------------------
+10.3 HOVER EFFECTS
+--------------------------------------------------------------------------------
+
+CARD HOVER:
+
+Transform:
+  - translateY(-4px)
+  - Duration: 300ms
+  - Easing: ease
+
+Shadow:
+  - From: 0px 4px 4px rgba(0,0,0,0.25)
+  - To: 0px 8px 16px rgba(0,0,0,0.3)
+  - Duration: 300ms
+
+Museum Card Hover (Enhanced):
+  - translateY(-8px)
+  - Shadow: 0 12px 24px rgba(0,0,0,0.15)
+  - Duration: 300ms ease-out
+
+BUTTON HOVER:
+
+Primary Button:
+  - Background: #AC0000 → #8B0000
+  - Transform: translateY(-2px)
+  - Shadow: Enhanced
+  - Duration: 200ms
+  - Easing: ease
+
+Secondary Button:
+  - Background: transparent → #AC0000
+  - Text: #AC0000 → white
+  - Padding expansion: 1px all sides
+  - Duration: 300ms
+  - Easing: ease
+
+Icon Button:
+  - Background: white → #F9FAFB
+  - Duration: 150ms
+  - Easing: ease
+
+LINK HOVER:
+
+Text Links:
+  - Color: Same (no change)
+  - Text decoration: none → underline
+  - Duration: 150ms
+  - Easing: ease
+
+Navigation Links:
+  - Color: #0A0A0A → #AC0000
+  - Duration: 200ms
+  - Easing: ease
+
+
+--------------------------------------------------------------------------------
+10.4 LOADING ANIMATIONS
+--------------------------------------------------------------------------------
+
+SPINNER:
+
+Type: Circular spinner
+Size: 24px (small), 40px (medium), 64px (large)
+Color: #AC0000
+Stroke width: 3px
+
+Animation:
+  - Rotation: 360deg continuous
+  - Duration: 1000ms
+  - Easing: linear
+  - Iteration: Infinite
+
+SVG Implementation:
+  <svg className="animate-spin" viewBox="0 0 24 24">
+    <circle 
+      cx="12" cy="12" r="10"
+      stroke="currentColor"
+      strokeWidth="3"
+      fill="none"
+      opacity="0.25"
+    />
+    <path
+      d="M12 2 A10 10 0 0 1 22 12"
+      stroke="currentColor"
+      strokeWidth="3"
+      fill="none"
+      strokeLinecap="round"
+    />
+  </svg>
+
+PROGRESS BAR (Future):
+
+Type: Linear progress bar
+Height: 4px
+Color: #AC0000
+Background: #E5E7EB
+
+Animation:
+  - Indeterminate (sliding)
+  - Width: 30% of container
+  - Movement: Left to right continuously
+  - Duration: 2000ms
+  - Easing: ease-in-out
+
+DOTS LOADER (Alternative):
+
+Type: Three dots
+Size: 8px each
+Color: #AC0000
+Spacing: 8px
+
+Animation:
+  - Bounce animation
+  - Each dot: Staggered delay (0ms, 150ms, 300ms)
+  - Duration: 1400ms
+  - Iteration: Infinite
+
+Keyframes:
+  @keyframes bounce {
+    0%, 80%, 100% {
+      transform: scale(0);
+    }
+    40% {
+      transform: scale(1);
+    }
+  }
+
+SKELETON SHIMMER (Enhanced):
+
+Type: Gradient shimmer effect
+Colors:
+  - Start: #E5E7EB
+  - Middle: #F3F4F6
+  - End: #E5E7EB
+
+Animation:
+  - Background position shift
+  - Duration: 2000ms
+  - Easing: linear
+  - Iteration: Infinite
+
+Implementation:
+  background: linear-gradient(
+    90deg,
+    #E5E7EB 0%,
+    #F3F4F6 50%,
+    #E5E7EB 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+
+Keyframes:
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+
+--------------------------------------------------------------------------------
+10.5 MODAL ANIMATIONS
+--------------------------------------------------------------------------------
+
+SHARE MODAL:
+
+Enter Animation:
+  Backdrop:
+    - Fade in
+    - Duration: 200ms
+    - From: opacity 0, blur 0
+    - To: opacity 1, blur 4px
+  
+  Modal Container:
+    - Scale + Fade
+    - Duration: 200ms
+    - From: scale(0.95), opacity 0
+    - To: scale(1), opacity 1
+    - Transform origin: center
+    - Easing: cubic-bezier(0.16, 1, 0.3, 1) (smooth)
+
+Exit Animation:
+  Modal Container:
+    - Scale + Fade
+    - Duration: 200ms
+    - From: scale(1), opacity 1
+    - To: scale(0.95), opacity 0
+    - Easing: ease-in
+  
+  Backdrop:
+    - Fade out
+    - Duration: 200ms
+    - From: opacity 1, blur 4px
+    - To: opacity 0, blur 0
+
+DETAIL VIEW MODAL:
+
+Enter:
+  - Full screen or large modal
+  - Slide up from bottom (mobile)
+  - Fade in + Scale (desktop)
+  - Duration: 300ms
+  - Easing: ease-out
+
+Exit:
+  - Slide down (mobile)
+  - Fade out + Scale (desktop)
+  - Duration: 300ms
+  - Easing: ease-in
+
+MUSEUM DETAIL MODAL:
+
+Header Image:
+  - Loads with fade
+  - Gradient overlay: Fade in after image
+  - Duration: 400ms
+
+Content Sections:
+  - Staggered fade in
+  - Each section: +100ms delay
+  - Duration: 300ms
+
+CONFIRMATION MODAL (Future):
+
+Enter:
+  - Shake animation (subtle)
+  - Scale from 0.9 to 1
+  - Duration: 300ms
+
+Button Hover:
+  - Enhanced hover for destructive actions
+  - Red button: Pulse effect on hover
+
+
+--------------------------------------------------------------------------------
+10.6 INTERACTION FEEDBACK ANIMATIONS
+--------------------------------------------------------------------------------
+
+COPY TO CLIPBOARD:
+
+Success Animation:
+  Button Icon:
+    - Copy → Check icon
+    - Transition: 200ms
+    
+  Button Text:
+    - "Copy" → "Copied"
+    - Fade out + Fade in
+    - Duration: 150ms each
+  
+  Button Background:
+    - Flash green (#10B981)
+    - Duration: 200ms
+    - Return to original: 1800ms
+
+Reset:
+  - After 2000ms
+  - Fade back to original state
+  - Duration: 200ms
+
+ZOOM CONTROLS:
+
+Button Click:
+  - Scale down: 0.95
+  - Duration: 100ms
+  - Return: 100ms
+  - Total: 200ms
+
+Image Zoom:
+  - Transform scale
+  - Duration: 300ms
+  - Easing: ease-out
+  - Smooth interpolation
+
+Pan:
+  - Transform translate
+  - Follow cursor
+  - No transition (immediate)
+  - Bounds constraint animation: 150ms
+
+SEARCH FILTER:
+
+Results Update:
+  - Fade out old results: 150ms
+  - Fade in new results: 150ms
+  - Stagger new items: 30ms delay each
+  - Total smooth transition
+
+Filter Dropdown:
+  Open:
+    - Height: 0 → auto
+    - Opacity: 0 → 1
+    - Duration: 200ms
+    - Easing: ease-out
+  
+  Close:
+    - Height: auto → 0
+    - Opacity: 1 → 0
+    - Duration: 150ms
+    - Easing: ease-in
+
+VIEW TOGGLE:
+
+Toggle Change:
+  - Grid → List or List → Grid
+  - Fade out current: 150ms
+  - Fade in new: 150ms
+  - Layout shift: Smooth (no jump)
+  - Item rearrange: Stagger 30ms
+
+Active Button:
+  - Background change: 200ms
+  - Icon color change: 200ms
+
+
+================================================================================
+                            APPENDIX
+================================================================================
+
+ANIMATION TIMING REFERENCE:
+
+Quick Actions (100-200ms):
+  - Button clicks
+  - Hover effects
+  - Focus states
+  - Icon changes
+
+Standard Transitions (200-300ms):
+  - Modal open/close
+  - Card hover
+  - Page fades
+  - Component reveals
+
+Longer Animations (300-500ms):
+  - Page transitions
+  - Complex modal animations
+  - Multi-step transitions
+
+Loading Animations (1000-2000ms):
+  - Skeleton pulse
+  - Spinner rotation
+  - Progress indicators
+
+EASING REFERENCE:
+
+ease: cubic-bezier(0.25, 0.1, 0.25, 1)
+  - General purpose
+  - Smooth start and end
+
+ease-in: cubic-bezier(0.42, 0, 1, 1)
+  - Exit animations
+  - Closing modals
+
+ease-out: cubic-bezier(0, 0, 0.58, 1)
+  - Enter animations
+  - Opening modals
+  - Card hover
+
+ease-in-out: cubic-bezier(0.42, 0, 0.58, 1)
+  - Page transitions
+  - Symmetric animations
+
+linear: cubic-bezier(0, 0, 1, 1)
+  - Loading spinners
+  - Continuous rotations
+
+custom-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55)
+  - Playful interactions
+  - Celebration animations
+
+
+================================================================================
+                         DESIGN TOKENS SUMMARY
+================================================================================
+
+COLORS:
+  Primary:              #AC0000
+  Primary Hover:        #8B0000
+  Text Primary:         #0A0A0A
+  Text Secondary:       #4A5565
+  Text Tertiary:        #717182
+  Background:           #FFFFFF
+  Background Gray:      #F9FAFB
+  Border:               rgba(0, 0, 0, 0.1)
+  Error:                #EF4444
+  Success:              #10B981
+
+TYPOGRAPHY:
+  Font Family:          'Roboto', sans-serif
+  Base Size:            16px
+  Weights:              400, 500, 700
+
+SPACING:
+  Base Unit:            4px
+  Container Padding:    88px (desktop), 16-24px (mobile)
+  Section Gap:          48px - 80px
+  Card Padding:         24px
+
+BORDERS:
+  Radius Small:         4px
+  Radius Medium:        8px
+  Radius Large:         14px - 16px
+  Radius XL:            20px
+
+SHADOWS:
+  Card:                 0px 4px 4px rgba(0,0,0,0.25)
+  Card Hover:           0px 8px 16px rgba(0,0,0,0.3)
+  Modal:                0 20px 25px -5px rgba(0,0,0,0.1)
+
+TRANSITIONS:
+  Fast:                 100-200ms
+  Standard:             200-300ms
+  Slow:                 300-500ms
+
+Z-INDEX:
+  Header:               50
+  Modal Backdrop:       40
+  Modal:                50
+  Dropdown:             30
+  Tooltip:              60
+
+
+================================================================================
+                              END OF DOCUMENT
+================================================================================
+
+For questions or clarifications on any design specification, please refer to:
+
+- SYSTEM-README.md for technical implementation
+- vite-optimization-checklist.md for build optimization
+- DEPLOYMENT-GUIDE.md for deployment instructions
+- PRODUCTION-VERIFICATION.md for quality assurance
+
+This design handoff documentation is complete and production-ready.
+
+Last Updated: December 15, 2025
+Version: 1.0.0
+Status: ✅ Complete

@@ -1,0 +1,132 @@
+You are applying a consistent button and interactive component design system across all pages and sub-views within these three curator dashboard sections of the ARKO Museum Curator Dashboard:
+
+Manage Items — including the item list view, item detail view, artifact submission review, edit artifact form, and any modal or drawer that opens within this section
+Condition Reports — including the reports list, individual report view, create/edit report form, and any related modals
+Manage Collections — including the collections list, individual collection view, add/edit collection form, assign items view, and any related modals or drawers
+
+Do not touch any other section of the dashboard. Do not modify the sidebar, top navbar, Dashboard Home, Access Management, Museum Operations, Visitor Scheduling, or any public-facing pages.
+
+DESIGN SYSTEM TO APPLY CONSISTENTLY
+Every button, badge, input, and interactive element across all pages and sub-views within the three sections above must follow this system exactly — no exceptions, no page-by-page variations.
+
+BUTTON SHAPES & SIZES — GLOBAL RULE
+
+No pill-shaped buttons anywhere in these three sections
+All buttons use border-radius: 8px
+Button height: 36px for standard actions, 32px for compact/inline actions
+Font: 13px, font-weight: 600, letter-spacing: 0.02em
+All buttons have transition: all 0.15s ease on hover
+
+
+BUTTON TYPES — apply by action type, not by page
+Primary Action (Submit, Save, Create, Approve, Confirm):
+
+Background: #16A34A solid
+Text: white
+Border: none
+Hover: background #15803D, translateY(-1px)
+Use for: Approve, Save Changes, Create Collection, Submit Report, Add Item, Confirm
+
+Destructive Action (Delete, Reject, Remove):
+
+Background: transparent
+Border: 1px solid rgba(239,68,68,0.4)
+Text: #EF4444
+Hover: background rgba(239,68,68,0.08), border rgba(239,68,68,0.7)
+Use for: Reject, Delete, Remove Item, Discard
+
+Secondary/Neutral Action (Edit, Assign, Download, Export, Duplicate):
+
+Background: rgba(255,255,255,0.06)
+Border: 1px solid rgba(255,255,255,0.1)
+Text: rgba(255,255,255,0.75)
+Hover: background rgba(255,255,255,0.1), text rgba(255,255,255,0.95)
+Use for: Edit, Assign, Download Report, Export, Duplicate, Back
+
+Ghost/Low-priority Action (Preview, View, Cancel, See Details):
+
+Background: transparent
+Border: none
+Text: rgba(255,255,255,0.45)
+Hover: background rgba(255,255,255,0.06), text rgba(255,255,255,0.75), border-radius: 6px
+Use for: See Preview, Cancel, View Details, Close
+
+Icon-only buttons (inline table/card actions):
+
+Size: 28px × 28px
+Background: transparent
+Border: none
+Icon color: rgba(255,255,255,0.4)
+Hover: background rgba(255,255,255,0.08), icon rgba(255,255,255,0.85), border-radius: 6px
+Destructive icon hover: background rgba(239,68,68,0.08), icon #EF4444
+
+
+BUTTON GROUPS & LAYOUT RULES
+Bottom action bars (artifact detail, report detail, collection detail):
+
+Container: padding: 16px 24px, border-top: 1px solid rgba(255,255,255,0.07), background matches parent panel
+Alignment: right-aligned, gap: 8px
+Order left to right: Ghost → Destructive → Primary (weakest to strongest)
+Example: "See Preview" (ghost) → "Reject" (destructive) → "Approve" (primary)
+
+Form action rows (bottom of create/edit forms):
+
+Cancel on the left as ghost button
+Save/Submit/Create on the right as primary button
+gap: 8px, right-aligned
+
+Inline table row actions:
+
+Use icon-only buttons
+Group them with gap: 4px
+Show on row hover only (opacity: 0 default, opacity: 1 on row hover)
+
+Confirmation modals/dialogs:
+
+Cancel: ghost button left
+Destructive confirm (Delete/Reject): destructive button right
+Non-destructive confirm (Save/Assign): primary button right
+
+
+STATUS BADGES — all pages in these three sections
+Shape: border-radius: 6px (not pill), 10px, font-weight: 700, letter-spacing: 0.08em, uppercase, padding: 3px 8px
+
+Approved / Public: background: rgba(34,197,94,0.12), color: #22C55E, border: 1px solid rgba(34,197,94,0.2)
+Pending / Submitted / Under Review: background: rgba(234,179,8,0.12), color: #EAB308, border: 1px solid rgba(234,179,8,0.2)
+Rejected: background: rgba(239,68,68,0.12), color: #EF4444, border: 1px solid rgba(239,68,68,0.2)
+Members Only / Restricted: background: rgba(196,151,58,0.12), color: #C4973A, border: 1px solid rgba(196,151,58,0.2)
+Draft: background: rgba(255,255,255,0.06), color: rgba(255,255,255,0.45), border: 1px solid rgba(255,255,255,0.1)
+Archived: background: rgba(148,163,184,0.12), color: #94A3B8, border: 1px solid rgba(148,163,184,0.2)
+
+
+FORM INPUTS — all create/edit forms in these three sections
+
+Background: rgba(255,255,255,0.05)
+Border: 1px solid rgba(255,255,255,0.1)
+Border-radius: 8px
+Text: rgba(255,255,255,0.85), 13px
+Placeholder: rgba(255,255,255,0.3)
+Focus: border rgba(255,255,255,0.3), box-shadow: 0 0 0 3px rgba(255,255,255,0.06)
+Height: 36px single-line, auto textarea
+Select dropdowns: same styling, custom rgba(255,255,255,0.3) chevron icon
+Labels: 12px, font-weight: 600, color: rgba(255,255,255,0.45), letter-spacing: 0.06em, uppercase, margin-bottom: 6px
+
+
+COLLAPSIBLE PANELS — artifact detail, condition report detail, collection detail
+
+Header background: rgba(255,255,255,0.03), hover rgba(255,255,255,0.05)
+Border-radius: 8px collapsed, 8px 8px 0 0 expanded
+Title: 13px, font-weight: 600, color: rgba(255,255,255,0.75), icon + text gap: 8px
+Chevron: rgba(255,255,255,0.35), rotates 180deg on expand, transition: 0.2s
+Panel body: background: rgba(255,255,255,0.02), border: 1px solid rgba(255,255,255,0.07), border-top: none, border-radius: 0 0 8px 8px
+Data rows: label rgba(255,255,255,0.35) left, value rgba(255,255,255,0.8) right, padding: 10px 16px, alternating rgba(255,255,255,0.02) row tint
+
+
+SCOPE RULES
+
+Apply to every page, sub-view, form, modal, drawer, and detail panel within Manage Items, Condition Reports, and Manage Collections
+Every button on every screen in these sections must use one of the five button types above — no custom one-off button styles
+Every status indicator must use the badge system above — no colored text, no plain labels
+Every form field must use the input system above — no default browser inputs
+Do not modify anything outside these three sections
+The result must feel like one unified, calm, professional curator tool — consistent from the list view all the way through to the deepest form or modal

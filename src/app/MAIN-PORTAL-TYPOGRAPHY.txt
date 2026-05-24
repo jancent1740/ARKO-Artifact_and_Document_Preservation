@@ -1,0 +1,1011 @@
+================================================================================
+  NAGA CITY HISTORICAL MUSEUMS — MAIN PORTAL TYPOGRAPHY DOCUMENTATION
+  File: src/app/imports/HomepageLandingPortal.tsx (and its Part files)
+  Last Updated: May 2026
+  Scope: Main Landing Portal ONLY (excludes UNC Museum sub-portal)
+================================================================================
+
+--------------------------------------------------------------------------------
+TABLE OF CONTENTS
+--------------------------------------------------------------------------------
+  1. GLOBAL / BASE TYPOGRAPHY SYSTEM
+  2. CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+  3. BASE ELEMENT DEFAULTS
+  4. SECTION-BY-SECTION TYPOGRAPHY BREAKDOWN
+       4.1  Navigation Header
+       4.2  Hero Section (Full-Screen Banner)
+       4.3  Quick Information Access Section
+       4.4  Museum Directory Section
+       4.5  Featured Artifacts & Documents Section
+       4.6  Events & Timeline Section
+       4.7  Footer Section
+  5. FONT WEIGHT REFERENCE CHART
+  6. FULL COLOR REFERENCE FOR TYPOGRAPHY
+  7. LETTER-SPACING & LINE-HEIGHT TOKENS
+  8. STAT CARD TYPOGRAPHY UTILITIES
+  9. NOTES & OBSERVATIONS
+--------------------------------------------------------------------------------
+
+
+================================================================================
+1. GLOBAL / BASE TYPOGRAPHY SYSTEM
+================================================================================
+
+APPLIED VIA: /src/styles/globals.css  (imported in /src/styles/index.css)
+FONT IMPORT:  /src/styles/fonts.css   (first line of index.css)
+
+  Primary Font Family (Global):
+    font-family: 'Roboto', sans-serif
+    Applied to:   All elements via `*` selector and `body` selector
+    Import URL:   https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap
+    Weights loaded from Google Fonts: 400 (Regular), 500 (Medium), 700 (Bold)
+
+  Base Font Size (html root):
+    font-size: 16px  (via CSS variable --font-size: 16px)
+
+  Font Smoothing (body):
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+
+  IMPORTANT NOTE:
+    The imported Figma components (HomepageLandingPortalPart2–Part6) were
+    translated directly from Figma and internally reference:
+      font-['Inter:Regular',sans-serif]
+      font-['Inter:Semi_Bold',sans-serif]
+      font-['Inter:Bold',sans-serif]
+      font-['Inter:Light',sans-serif]
+    These are Figma-specific font references. In the browser, 'Inter' must be
+    loaded separately for these to render correctly, otherwise they fall back to
+    the global 'Roboto' family. The sans-serif fallback is always present.
+    The global Roboto declaration in globals.css acts as the fallback for all
+    components that do not explicitly specify Inter.
+
+
+================================================================================
+2. CSS CUSTOM PROPERTIES (DESIGN TOKENS)
+================================================================================
+
+DEFINED IN: /src/styles/globals.css  under  :root { }
+
+  -- TYPOGRAPHY SCALE --
+  --text-xs:    0.75rem   (12px)
+  --text-sm:    0.875rem  (14px)
+  --text-base:  1rem      (16px)
+  --text-lg:    1.125rem  (18px)
+  --text-xl:    1.25rem   (20px)
+  --text-2xl:   1.875rem  (30px)
+  --text-3xl:   2.25rem   (36px)
+
+  -- LINE HEIGHTS --
+  --leading-tight:    1.25
+  --leading-normal:   1.5
+  --leading-relaxed:  1.75
+
+  -- LETTER SPACING --
+  --tracking-tight:   -0.015em
+  --tracking-normal:   0
+  --tracking-wide:     0.025em
+  --tracking-wider:    0.05em
+
+  -- FONT WEIGHTS --
+  --font-weight-normal:    400
+  --font-weight-medium:    500
+  --font-weight-semibold:  600
+  --font-weight-bold:      700
+
+  -- STAT CARD TYPOGRAPHY TOKENS --
+  --stat-card-label-size:    0.875rem   (14px)
+  --stat-card-label-weight:  500        (medium)
+  --stat-card-label-height:  1.25       (tight)
+  --stat-card-value-size:    2.25rem    (36px)
+  --stat-card-value-weight:  600        (semibold)
+  --stat-card-value-height:  1          (none / tight for large numbers)
+
+  -- KEY COLOR VARIABLES (typography-relevant) --
+  --foreground:          oklch(0.145 0 0)  ≈ very dark near-black
+  --muted-foreground:    #717182          (medium grey)
+  --primary:             #030213          (near-black)
+  --background:          #ffffff          (white)
+
+
+================================================================================
+3. BASE ELEMENT DEFAULTS
+================================================================================
+
+Applied via @layer base in /src/styles/globals.css.
+These apply when element does not have a Tailwind text class ancestor.
+
+  ELEMENT     SIZE (rem)  SIZE (px)  WEIGHT  LINE-HEIGHT
+  ---------   ----------  ---------  ------  -----------
+  h1          1.875rem    30px       500     1.5
+  h2          1.25rem     20px       500     1.5
+  h3          1.125rem    18px       500     1.5
+  h4          1rem        16px       500     1.5
+  p           1rem        16px       400     1.5
+  label       1rem        16px       500     1.5
+  button      1rem        16px       500     1.5
+  input       1rem        16px       400     1.5
+
+
+================================================================================
+4. SECTION-BY-SECTION TYPOGRAPHY BREAKDOWN
+================================================================================
+
+--------------------------------------------------------------------------------
+4.1  NAVIGATION HEADER
+     Source: HomepageLandingPortalPart6.tsx → Header()
+     Background: rgba(255,255,255,0.95) with backdrop-blur-sm
+     Border-bottom: #e2e8f0 with shadow
+--------------------------------------------------------------------------------
+
+  BRAND LOGO AREA
+  ├── Museum Title: "Naga City Historical Museums"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    16.875px
+  │     color:        #1e293b  (Slate 800 — dark navy)
+  │     line-height:  28px
+  │
+  └── Museum Subtitle: "Cultural Heritage Network"
+        font-family:  'Inter:Regular', sans-serif
+        font-weight:  400 (regular)
+        font-size:    11.25px
+        color:        #64748b  (Slate 500 — medium grey)
+        line-height:  16px
+
+  NAVIGATION LINKS (Horizontal nav bar)
+  ├── "Home" (active/current page)
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    13.563px
+  │     color:        #1e293b  (Slate 800 — dark, indicates active)
+  │
+  ├── "Exhibitions"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    13.016px
+  │     color:        #64748b  (Slate 500 — muted, indicates inactive)
+  │
+  └── "Visit"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    12.688px
+        color:        #64748b  (Slate 500 — muted, indicates inactive)
+
+  SEARCH INPUT
+  └── Placeholder text: "Search collections..."
+        font-family:  'Inter:Regular', sans-serif
+        font-weight:  400 (regular)
+        font-size:    12.578px
+        color:        #64748b  (Slate 500)
+        background:   #f8fafc  (very light grey)
+        border-radius: 6px
+        height:       36px
+        width:        256px
+
+  CTA BUTTONS (Login / Register) — Header top-right
+  └── Button text (both "Login" and "Register")
+        font-weight:  500 (medium) via Tailwind `font-medium`
+        font-size:    inherits base (16px / Roboto)
+        color:        #334155  (Slate 700)
+        border:       2px solid #334155
+        background:   transparent
+        padding:      py-2 px-5 (8px 20px)
+        border-radius: 0.5rem (8px) via `rounded-lg`
+        hover color:  #ffffff
+        hover bg:     #334155
+        transition:   all 300ms
+
+
+--------------------------------------------------------------------------------
+4.2  HERO SECTION (Full-Screen Banner)
+     Source: HomepageLandingPortalPart6.tsx → Section() / Heading()
+     Background: Full-bleed photographic image (Grand Museum Hall)
+     Overlays:
+       - Gradient left-to-right: rgba(0,0,0,0.7) → rgba(0,0,0,0.4)
+       - Gradient bottom-to-top: rgba(0,0,0,0.6) → rgba(0,0,0,0)
+     Height: min-h-screen (100vh)
+--------------------------------------------------------------------------------
+
+  HERO BADGE / EYEBROW
+  └── "Naga City Cultural Heritage Network"
+        font-family:    'Inter:Semi_Bold', sans-serif
+        font-weight:    600 (semibold)
+        font-size:      13.234px
+        color:          #ffffff  (white)
+        letter-spacing: 0.35px
+        text-align:     center
+        container bg:   rgba(255,255,255,0.15) with backdrop-blur-sm
+        container border: rgba(255,255,255,0.25)
+        border-radius:  9999px (fully rounded pill)
+        padding:        8.8px 20.8px
+
+  MAIN HEADLINE — Line 1
+  └── "Discover Naga's"
+        font-family:    'Inter:Bold', sans-serif
+        font-weight:    700 (bold)
+        font-size:      68.203px
+        color:          #ffffff  (white)
+        letter-spacing: -1.8px   (tight tracking)
+        line-height:    79.2px
+        text-align:     center
+
+  MAIN HEADLINE — Line 2 (continues Heading 1)
+  └── "Cultural Heritage"
+        font-family:    'Inter:Bold', sans-serif
+        font-weight:    700 (bold)
+        font-size:      69.328px
+        color:          #ffffff  (white)
+        letter-spacing: -1.8px   (tight tracking)
+        line-height:    79.2px
+        text-align:     center
+
+  NOTE: The two headline lines form a single display heading (H1) split into
+  two <div> containers in the Figma export. Together they compose the full
+  hero title.
+
+  HERO SUBTITLE / DESCRIPTION PARAGRAPH
+  └── "Explore five magnificent museums showcasing the rich history..."
+        font-family:  'Inter:Light', sans-serif
+        font-weight:  300 (light)
+        font-size:    17.656px
+        color:        #e2e8f0  (Slate 200 — very light grey/white-ish)
+        line-height:  32.5px
+        text-align:   center
+        max-width:    768px
+
+  HERO STAT CARDS (3 frosted-glass cards — bottom of hero)
+  Card background: rgba(255,255,255,0.1) with backdrop-blur-[6px]
+  Card border:     rgba(255,255,255,0.2)
+  Card size:       240px wide, self-stretch height
+  Card padding:    24.8px
+
+    STAT NUMBERS (large numeric display):
+    ├── "5"  (Museums)
+    ├── "12" (Active Exhibitions)
+    └── "7"  (Days Open)
+          font-family:  'Inter:Bold', sans-serif
+          font-weight:  700 (bold)
+          font-size:    30px
+          color:        #ffffff  (white)
+          line-height:  36px
+          text-align:   center
+
+    STAT LABELS (below each number):
+    ├── "Museums"
+    ├── "Active Exhibitions"
+    └── "Days Open"
+          font-family:  'Inter:Semi_Bold', sans-serif
+          font-weight:  600 (semibold)
+          font-size:    13.016px / 12.906px / 13.125px  (slight Figma variations)
+          color:        #d1d5dc  (Slate 300 — light grey)
+          line-height:  20px
+          text-align:   center
+
+    STAT ICON CONTAINERS:
+    └── Background: rgba(255,255,255,0.1) with backdrop-blur-sm
+        Padding: 12px, border-radius: 8px
+        Icon size: 24x24px, stroke: white at 70% opacity
+
+
+--------------------------------------------------------------------------------
+4.3  QUICK INFORMATION ACCESS SECTION
+     Source: HomepageLandingPortalPart5.tsx → Container63() / Container60()
+     Background: white (#ffffff)
+--------------------------------------------------------------------------------
+
+  SECTION EYEBROW BADGE
+  └── "Quick Access"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    12.469px
+        color:        #334155  (Slate 700)
+        background:   rgba(51,65,85,0.1)
+        border:       rgba(51,65,85,0.2)
+        border-radius: 9999px (pill)
+        padding:      12.8px 24.8px
+
+  SECTION HEADING (H2)
+  └── "Quick Information Access"
+        font-family:  'Inter:Bold', sans-serif
+        font-weight:  700 (bold)
+        font-size:    34.453px
+        color:        #1e293b  (Slate 800)
+        line-height:  40px
+        text-align:   center
+
+  SECTION SUBTITLE
+  └── "Everything you need to plan and enhance your museum experience"
+        font-family:  'Inter:Regular', sans-serif
+        font-weight:  400 (regular)
+        font-size:    16.734px
+        color:        #64748b  (Slate 500)
+        line-height:  29.25px
+        text-align:   center
+
+  INFO CARDS — Card 1: "Operating Hours"
+  ├── Card Heading (H4)
+  │     "Operating Hours"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    17.016px
+  │     color:        #1e293b  (Slate 800)
+  │     line-height:  28px
+  │
+  ├── Status Badge: "Open daily"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    11.438px
+  │     color:        #0f766e  (Teal 700)
+  │     background:   rgba(15,118,110,0.1)
+  │     border:       rgba(15,118,110,0.2)
+  │     border-radius: 9999px (pill)
+  │     padding:      6.8px 12.8px
+  │
+  ├── Card Description
+  │     "Current hours, holiday schedules, and special opening times"
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    12.906px
+  │     color:        #64748b  (Slate 500)
+  │     line-height:  22.75px
+  │
+  └── CTA Button: "Check Hours"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    12.797px
+        color:        #1e293b  (Slate 800)
+        background:   white
+        border:       #e2e8f0
+        height:       40px, border-radius: 6px
+
+  INFO CARDS — Card 2: "Featured Collections"
+  ├── Card Heading (H4)
+  │     "Featured Collections"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    16.594px
+  │     color:        #1e293b  (Slate 800)
+  │     line-height:  28px
+  │
+  ├── Status Badge: "Over 2,000 items"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    10.875px
+  │     color:        #0f766e  (Teal 700)
+  │     background:   rgba(15,118,110,0.1)
+  │     border:       rgba(15,118,110,0.2)
+  │
+  ├── Card Description
+  │     "Curated highlights from our most treasured artifacts and artworks"
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    13.016px
+  │     color:        #64748b  (Slate 500)
+  │     line-height:  22.75px
+  │
+  └── CTA Button: "Browse Collections"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    12.797px
+        color:        #1e293b
+        background:   white
+
+  INFO CARDS — Card 3: "Museum Locations"
+  ├── Card Heading (H4)
+  │     "Museum Locations"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    16.734px
+  │     color:        #1e293b  (Slate 800)
+  │     line-height:  28px
+  │
+  ├── Status Badge: "Downtown area"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    11.25px
+  │     color:        #0f766e  (Teal 700)
+  │
+  ├── Card Description
+  │     "Interactive map showing all museum locations and transportation"
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    13.125px
+  │     color:        #64748b
+  │     line-height:  22.75px
+  │
+  └── CTA Button: "View Map"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    13.234px
+        color:        #1e293b
+        background:   white
+
+
+--------------------------------------------------------------------------------
+4.4  MUSEUM DIRECTORY SECTION
+     Source: HomepageLandingPortalPart2.tsx → Homepage()
+     Background: white (#ffffff)
+     Displays 5 museum cards in a grid layout
+--------------------------------------------------------------------------------
+
+  SECTION EYEBROW BADGE
+  └── "Museum Directory"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    13.234px
+        color:        #334155  (Slate 700)
+        background:   rgba(51,65,85,0.1)
+        border:       rgba(51,65,85,0.2)
+        border-radius: 9999px (pill)
+        padding:      12.8px 24.8px
+
+  SECTION HEADING (H2)
+  └── "Explore Our Museums"
+        font-family:  'Inter:Bold', sans-serif
+        font-weight:  700 (bold)
+        font-size:    34.594px
+        color:        #1e293b  (Slate 800)
+        line-height:  40px
+        text-align:   center
+
+  SECTION SUBTITLE
+  └── "Discover seven unique museums that showcase Naga City's diverse..."
+        font-family:  'Inter:Regular', sans-serif
+        font-weight:  400 (regular)
+        font-size:    16.594px
+        color:        #64748b  (Slate 500)
+        line-height:  29.25px
+        text-align:   center
+        max-width:    768px
+
+  MUSEUM CARD — Image Overlay Title (appears over photo gradient)
+  ├── Museum 1: "Museo del Seminario Concilar de Nueva Caceres"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    18.75px
+  │     color:        #ffffff  (white)
+  │     line-height:  25px
+  │     (renders on dark gradient overlay: rgba(0,0,0,0.8) bottom)
+  │
+  └── Museum 2: "University of Nueva Caceres Museum"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    18.438px
+        color:        #ffffff  (white)
+        line-height:  25px
+
+  MUSEUM CARD — Body Description Text (below image)
+  ├── Museum 1 description (Seminary artifacts, religious art...)
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    15px
+  │     color:        #64748b  (Slate 500)
+  │     line-height:  26px
+  │
+  └── Museum 2 description (Academic institution, student life...)
+        font-family:  'Inter:Regular', sans-serif
+        font-weight:  400 (regular)
+        font-size:    14.875px
+        color:        #64748b  (Slate 500)
+        line-height:  26px
+
+  MUSEUM CARD — Exhibition Info Box (inside card, slate bg)
+  ├── Exhibition Badge: "Current Exhibition"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    11.25px
+  │     color:        #334155  (Slate 700)
+  │     background:   rgba(51,65,85,0.1)
+  │     border:       rgba(51,65,85,0.2)
+  │     border-radius: 6px
+  │     padding:      2.8px 8.8px
+  │
+  └── Exhibition Title
+        Museum 1: "Sacred Knowledge: Seminary Traditions Through Time"
+        Museum 2: "Campus Life: Stories from the Archives"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    12.906px
+        color:        #1e293b  (Slate 800)
+        line-height:  22.75px
+        background-container: #f1f5f9  (Slate 100)
+
+  MUSEUM CARD — Location & Hours Metadata (icon + text rows)
+  ├── Location Text (e.g. "Seminary Grounds, Naga City")
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    13.125px  (Museum 1) / 13.344px (Museum 2)
+  │     color:        #1e293b  (Slate 800)
+  │     line-height:  20px
+  │
+  └── Hours Text (e.g. "9:00 AM - 5:00 PM")
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    12.797px  (Museum 1) / 12.688px (Museum 2)
+        color:        #1e293b  (Slate 800)
+        line-height:  20px
+
+  MUSEUM CARD — Action Buttons (bottom of card)
+  ├── Primary Button: "Visit Museum"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    13.125px
+  │     color:        #ffffff  (white)
+  │     background:   #334155  (Slate 700)
+  │     height:       40px
+  │     border-radius: 6px
+  │     padding:      8px 12px
+  │     shadow:       0px 1px 3px rgba(0,0,0,0.1)
+  │
+  └── Secondary Button: "Learn More"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    13.234px
+        color:        #1e293b  (Slate 800)
+        background:   white
+        border:       #e2e8f0  (Slate 200)
+        height:       40px
+        border-radius: 6px
+
+
+--------------------------------------------------------------------------------
+4.5  FEATURED ARTIFACTS & DOCUMENTS SECTION
+     Source: HomepageLandingPortalPart3.tsx → Section3() / Container235()
+     Background: white (#ffffff)
+     Displays artifact cards in a masonry/grid layout
+--------------------------------------------------------------------------------
+
+  SECTION EYEBROW BADGE
+  └── "Heritage Collection"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    13.125px
+        color:        #0f766e  (Teal 700)
+        background:   rgba(15,118,110,0.1)
+        border:       rgba(15,118,110,0.2)
+        border-radius: 9999px (pill)
+        padding:      8.8px 16.8px
+
+  SECTION HEADING (H2)
+  └── "Featured Artifacts & Documents"
+        font-family:  'Inter:Bold', sans-serif
+        font-weight:  700 (bold)
+        font-size:    34.875px
+        color:        #1e293b  (Slate 800)
+        line-height:  40px
+        text-align:   center
+
+  SECTION SUBTITLE
+  └── "Explore remarkable artifacts and historical documents that preserve..."
+        font-family:  'Inter:Regular', sans-serif
+        font-weight:  400 (regular)
+        font-size:    16.594px
+        color:        #64748b  (Slate 500)
+        line-height:  29.25px
+        text-align:   center
+        max-width:    768px
+
+  ARTIFACT CARD — Type Badge (frosted-glass overlay, top-left of image)
+  └── e.g. "document", "artifact"  (capitalized via CSS)
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    11.25px / 11.063px
+        color:        #ffffff  (white)
+        background:   rgba(0,0,0,0.5) with backdrop-blur-sm
+        border:       rgba(255,255,255,0.2)
+        border-radius: 6px
+        padding:      2.8px 8.8px
+
+  ARTIFACT CARD — Category Badge (solid color, top-right of image)
+  └── e.g. "Manuscripts", "Ceramics"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    11.063px / 10.688px
+        color:        #ffffff  (white)
+        background:   #0f766e  (Teal 700 — solid)
+        border-radius: 6px
+        padding:      2.8px 8.8px
+
+  ARTIFACT CARD — Title / Heading (over image gradient, bottom-left)
+  ├── "Bikol Manuscript Collection"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    16.875px
+  │     color:        #ffffff  (white)
+  │     line-height:  22.5px
+  │
+  └── "Pre-Colonial Pottery Vessels"
+        font-family:  'Inter:Semi_Bold', sans-serif
+        font-weight:  600 (semibold)
+        font-size:    16.453px
+        color:        #ffffff  (white)
+        line-height:  22.5px
+
+  ARTIFACT CARD — Short Description (below title, over gradient)
+  ├── Museum 1 description text
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    13.016px
+  │     color:        #e2e8f0  (Slate 200 — light grey on dark)
+  │     line-height:  22.75px
+  │
+  └── Museum 2 description text
+        font-family:  'Inter:Regular', sans-serif
+        font-weight:  400 (regular)
+        font-size:    12.797px
+        color:        #e2e8f0  (Slate 200)
+        line-height:  22.75px
+
+  ARTIFACT CARD — Metadata Row (era/period, view details)
+  ├── Era/Period (e.g. "17th Century", "10th-12th Century")
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    11.25px / 11.063px
+  │     color:        #ffffff  (white)
+  │     line-height:  16px
+  │
+  └── "View Details"
+        font-family:  'Inter:Regular', sans-serif
+        font-weight:  400 (regular)
+        font-size:    11.063px
+        color:        #ffffff  (white)
+        line-height:  16px
+
+  ARTIFACT CARD — Museum Attribution Footer (below image, white bg)
+  ├── Museum Name (e.g. "UNC Museum")
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    13.234px
+  │     color:        #334155  (Slate 700)
+  │     line-height:  20px
+  │
+  └── "Explore →" link label
+        font-family:  'Inter:Regular', sans-serif
+        font-weight:  400 (regular)
+        font-size:    11.063px
+        color:        #64748b  (Slate 500)
+        line-height:  16px
+
+
+--------------------------------------------------------------------------------
+4.6  EVENTS & TIMELINE SECTION
+     Source: HomepageLandingPortalPart5.tsx → Container64()
+     Background: white (#ffffff)
+     Accent color used here: #AC0000 (deep red/maroon — the museum primary)
+     Decorative blur overlays: rgba(172,0,0,0.03) and rgba(172,0,0,0.05)
+--------------------------------------------------------------------------------
+
+  NOTE: The events section (Container64) is programmatically generated with
+  JSX and uses Tailwind utility classes rather than Figma-extracted styles.
+  Typography here aligns with the global Roboto-based system.
+
+  SECTION EYEBROW BADGE
+  └── Category label (e.g. museum name or event type)
+        font-weight:  600 (semibold)
+        font-size:    ~13px range
+        color:        #AC0000  (Heritage Red — primary accent)
+        background:   rgba(172,0,0,0.1)
+        border-radius: 9999px (pill)
+
+  UPCOMING EVENTS — Card Heading
+  └── Event title text
+        font-weight:  600–700
+        font-size:    ~16–18px range
+        color:        #1e293b  (Slate 800)
+
+  TIMELINE MILESTONES — Year Label
+  └── Year text (e.g. "1595", "1868")
+        font-weight:  700 (bold)
+        font-size:    large display (30px+ range)
+        color:        #AC0000  (Heritage Red)
+
+  TIMELINE MILESTONES — Milestone Title
+  └── Title text
+        font-weight:  600 (semibold)
+        font-size:    ~16–18px
+        color:        #1e293b  (Slate 800)
+
+  TIMELINE MILESTONES — Milestone Description
+  └── Body paragraph
+        font-weight:  400 (regular)
+        font-size:    ~14–15px
+        color:        #64748b  (Slate 500)
+        line-height:  ~1.6
+
+
+--------------------------------------------------------------------------------
+4.7  FOOTER SECTION
+     Source: HomepageLandingPortalPart4.tsx → Footer()
+     Background: #0f172b  (Slate 950 — very dark navy, near-black)
+     Text color theme: mostly white with varying opacity levels
+     Padding: 64px vertical, max-width 1280px container
+--------------------------------------------------------------------------------
+
+  FOOTER BRAND BLOCK (left column)
+  ├── Museum Name: "Naga City Museums"
+  │     font-family:  'Inter:Bold', sans-serif
+  │     font-weight:  700 (bold)
+  │     font-size:    19.063px
+  │     color:        #ffffff  (white)
+  │     line-height:  28px
+  │
+  ├── Network Label: "Cultural Heritage Network"
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    13.125px
+  │     color:        rgba(255,255,255,0.7)  (white at 70% opacity)
+  │     line-height:  20px
+  │
+  └── Footer Description Paragraph
+        "Preserving and sharing the rich cultural heritage of Naga City..."
+        font-family:  'Inter:Regular', sans-serif
+        font-weight:  400 (regular)
+        font-size:    14.75px
+        color:        rgba(255,255,255,0.8)  (white at 80% opacity)
+        line-height:  26px
+        max-width:    448px
+
+  CONTACT INFORMATION (center-left column)
+  ├── Column Heading: "Contact Information"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    17.016px
+  │     color:        #ffffff  (white)
+  │     line-height:  28px
+  │
+  ├── Address: "Naga City Cultural District / Camarines Sur, Philippines"
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    13.016px
+  │     color:        rgba(255,255,255,0.8)
+  │     line-height:  22.75px
+  │
+  ├── Phone: "+63 54 123 4567"
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    12.688px
+  │     color:        rgba(255,255,255,0.8)
+  │     line-height:  20px
+  │
+  ├── Email: "info@nagamuseums.ph"
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    13.234px
+  │     color:        rgba(255,255,255,0.8)
+  │     line-height:  20px
+  │
+  ├── Hours Primary: "Mon-Sun: 8:00 AM - 7:00 PM"
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    12.906px
+  │     color:        rgba(255,255,255,0.8)
+  │     line-height:  22.75px
+  │
+  └── Hours Note: "(Hours vary by museum)"
+        font-family:  'Inter:Regular', sans-serif
+        font-weight:  400 (regular)
+        font-size:    11.063px
+        color:        rgba(255,255,255,0.6)  (white at 60% opacity)
+        line-height:  16px
+
+  QUICK LINKS (right column)
+  ├── Column Heading: "Quick Links"
+  │     font-family:  'Inter:Semi_Bold', sans-serif
+  │     font-weight:  600 (semibold)
+  │     font-size:    16.594px
+  │     color:        #ffffff  (white)
+  │     line-height:  28px
+  │
+  └── Link Items (each prefixed with a small bullet dot):
+        "All Museums"         — 13.234px
+        "Current Exhibitions" — 13.016px
+        "Events Calendar"     — 12.688px
+        "Educational Programs"— 13.016px
+        "Group Tours"         — 13.016px
+        "Research Collections"— 12.688px
+        "Support Us"          — 12.906px
+          font-family:  'Inter:Regular', sans-serif
+          font-weight:  400 (regular)
+          color:        rgba(255,255,255,0.8)
+          line-height:  20px
+          Bullet dot:   4px circle, rgba(255,255,255,0.5)
+
+  FOOTER BOTTOM BAR (separated by full-width top border)
+  Border: rgba(255,255,255,0.2) at 0.8px
+  ├── Copyright: "© 2025 Naga City Museums. All rights reserved."
+  │     font-family:  'Inter:Regular', sans-serif
+  │     font-weight:  400 (regular)
+  │     font-size:    12.906px
+  │     color:        rgba(255,255,255,0.6)  (white at 60% opacity)
+  │     line-height:  20px
+  │
+  └── Legal Links (right-aligned):
+        "Privacy Policy"  — 12.578px
+        "Terms of Service"— 12.469px
+        "Accessibility"   — 12.578px
+          font-family:  'Inter:Regular', sans-serif
+          font-weight:  400 (regular)
+          color:        rgba(255,255,255,0.6)
+          line-height:  20px
+
+
+================================================================================
+5. FONT WEIGHT REFERENCE CHART
+================================================================================
+
+  NUMERIC  KEYWORD    INTER CLASS         USAGE IN PORTAL
+  -------  ---------  ------------------  -----------------------------------------
+  300      light      Inter:Light         Hero section description paragraph only
+  400      regular    Inter:Regular       Body text, descriptions, links, metadata,
+                                          footer contact details, nav subtitle,
+                                          search placeholder, copyright notices
+  500      medium     (Tailwind utility)  CTA buttons in nav header (Login/Register)
+                                          Base element defaults (h1-h4, labels,
+                                          buttons) from globals.css
+  600      semibold   Inter:Semi_Bold     Navigation links, section badges, card
+                                          headings, card metadata, exhibition labels,
+                                          museum card overlay titles, stat labels,
+                                          button text, footer column headings,
+                                          hero badge
+  700      bold       Inter:Bold          Main section headings (H2 level: ~34-35px),
+                                          hero headline (H1: 68-69px), footer brand
+                                          name, stat card numbers, hero stat numbers
+
+
+================================================================================
+6. FULL COLOR REFERENCE FOR TYPOGRAPHY
+================================================================================
+
+  HEX / VALUE                     ROLE / USAGE
+  ------------------------------  -----------------------------------------------
+  #1e293b  (Slate 800)            Primary dark text — headings, card titles,
+                                  section headings, button text on white bg,
+                                  active nav links, location/hours text
+  #334155  (Slate 700)            Section badges, museum name in artifact footer,
+                                  primary button bg ("Visit Museum"),
+                                  login/register button border/text
+  #64748b  (Slate 500)            Body text, descriptions, subtitles, inactive
+                                  nav links, card body copy, search placeholder,
+                                  "Explore →" label, nav subtitle
+  #717182  (Muted foreground)     System muted text token from globals.css
+  #0f766e  (Teal 700)             Heritage Collection badge text and bg tint,
+                                  "Open daily" / "Over 2,000 items" badges,
+                                  Artifact card category badge (solid bg)
+  #AC0000  (Heritage Red/Maroon)  Museum primary accent color — used in Events/
+                                  Timeline section for year labels, eyebrow badges
+                                  Decorative blur overlays in events section
+  #ffffff  (White)                All text on dark/image/gradient backgrounds —
+                                  hero text, stat numbers, card overlay titles,
+                                  artifact card text, footer brand name,
+                                  footer headings, button text on dark bg
+  rgba(255,255,255,0.8)           Footer body text, contact details, quick links
+  rgba(255,255,255,0.7)           Footer network label
+  rgba(255,255,255,0.6)           Footer bottom bar copyright, legal links,
+                                  hours note secondary line
+  #e2e8f0  (Slate 200)            Artifact card description on dark gradient
+  #d1d5dc  (Slate 300)            Hero stat card labels
+  #0f172b  (Slate 950)            Footer background color (not text, but context)
+  rgba(0,0,0,0.1)                 CSS border token (--border) system-wide
+  oklch(0.145 0 0)                Global foreground text color token (≈ very dark)
+
+
+================================================================================
+7. LETTER-SPACING & LINE-HEIGHT REFERENCE
+================================================================================
+
+  CUSTOM TOKEN          VALUE         USAGE
+  --------------------  ------------  -------------------------------------------
+  --tracking-tight      -0.015em      Available as token; not heavily used inline
+  --tracking-normal      0            Default
+  --tracking-wide        0.025em      Available as token
+  --tracking-wider       0.05em       Available as token
+
+  INLINE LETTER-SPACING USED IN PORTAL COMPONENTS:
+  ├── Hero badge "Naga City Cultural Heritage Network":  0.35px   (positive/open)
+  └── Hero H1 headlines:                               -1.8px    (tight/condensed)
+
+  LINE-HEIGHT VALUES USED IN PORTAL (extracted from components):
+  ├── 79.2px  — Hero H1 display headings (~68-69px font)
+  ├── 40px    — Section H2 headings (~34-35px font)
+  ├── 36px    — Hero stat numbers (30px font)
+  ├── 32.5px  — Hero subtitle (17.656px font)
+  ├── 29.25px — Section subtitles (16.5-16.7px font)
+  ├── 28px    — Card H4 headings (~17px font), footer column headings
+  ├── 26px    — Museum card descriptions (14.75-15px font)
+  ├── 25px    — Museum overlay card titles (18-18.75px font)
+  ├── 22.75px — Artifact descriptions, contact address (~13px font)
+  ├── 22.5px  — Artifact card titles (~16-17px font)
+  ├── 20px    — Navigation links, link labels, quick links, metadata
+  ├── 16px    — Small badges, tiny labels, metadata, hours note
+  └── normal  — Search placeholder (browser default)
+
+
+================================================================================
+8. STAT CARD TYPOGRAPHY UTILITIES
+================================================================================
+
+Defined as CSS utility classes in /src/styles/globals.css under @layer utilities.
+
+  CLASS NAME          PROPERTY      VALUE                  EQUIVALENT
+  ------------------  ------------  ---------------------  ----------------------
+  .stat-card-label    font-size     var(--stat-card-label-size)    0.875rem / 14px
+                      font-weight   var(--stat-card-label-weight)  500 (medium)
+                      line-height   var(--stat-card-label-height)  1.25 (tight)
+
+  .stat-card-value    font-size     var(--stat-card-value-size)    2.25rem / 36px
+                      font-weight   var(--stat-card-value-weight)  600 (semibold)
+                      line-height   var(--stat-card-value-height)  1 (no extra space)
+
+
+================================================================================
+9. NOTES & OBSERVATIONS
+================================================================================
+
+  1. DUAL FONT SYSTEM:
+     The main portal operates with two overlapping font systems:
+     - Global CSS (globals.css): 'Roboto', sans-serif — applied to all elements
+     - Figma-exported components: 'Inter:*', sans-serif — embedded in className
+     In practice, the Inter references will only render correctly if Inter is
+     loaded separately (not currently imported in fonts.css). The Roboto global
+     declaration acts as fallback for all elements. The visual result on-screen
+     depends on whether Inter is loaded at runtime.
+
+  2. FONT SIZE PRECISION:
+     Font sizes throughout are specified with sub-pixel precision (e.g. 13.234px,
+     16.594px, 68.203px). These values are direct Figma exports and reflect exact
+     design intent. In a production implementation, these would typically be
+     rounded to nearest 0.25px or 0.5px for consistency.
+
+  3. FIGMA FONT CLASS NAMING CONVENTION:
+     The Figma-exported components use the pattern:
+       font-['Inter:Weight_Name',sans-serif]
+     Where Weight_Name maps to:
+       Regular     → 400
+       Semi_Bold   → 600
+       Bold        → 700
+       Light       → 300
+
+  4. SECTION HEADING SIZES:
+     All major section headings (H2-level) across the portal fall in the
+     34–35px range, maintaining visual consistency:
+       "Explore Our Museums"           34.594px
+       "Featured Artifacts & Documents"34.875px
+       "Quick Information Access"      34.453px
+
+  5. HERO TYPOGRAPHY SCALE:
+     The hero section uses the largest display type in the entire portal:
+       H1 headline: 68–69px (split across two divs in Figma export)
+     This is approximately 4.25–4.33rem on a 16px base.
+
+  6. WHITE OPACITY LAYERING (Footer):
+     The footer uses a consistent opacity system for visual hierarchy on dark bg:
+       White 100% → primary headings and brand name
+       White 80%  → secondary body text and contact details
+       White 70%  → tertiary supporting labels
+       White 60%  → least prominent: copyright, legal links, hours note
+
+  7. ACCENT COLOR USAGE (#AC0000):
+     The museum primary accent (Heritage Red #AC0000) is used typographically
+     only in the Events & Timeline section for year display labels and category
+     badges. All other sections use the Slate/Teal palette.
+
+  8. TEAL ACCENT (#0f766e):
+     Teal is used for positive-status badges ("Open daily", "Heritage Collection",
+     "Over 2,000 items") and solid category badges on artifact cards. It signals
+     availability, categorization, and collection identity throughout the portal.
+
+  9. NO ITALIC TEXT:
+     All text throughout the main landing portal is specified as not-italic
+     (the Figma export explicitly sets `not-italic` on all text containers).
+
+  10. TEXT ALIGNMENT:
+      Section headers and their badges/subtitles are center-aligned.
+      Card content, descriptions, navigation, and footer text is left-aligned.
+      Stat card numbers and labels are center-aligned within their containers.
+      Buttons use center-aligned text internally.
+
+================================================================================
+  END OF TYPOGRAPHY DOCUMENTATION
+  Naga City Historical Museums — Main Landing Portal
+================================================================================

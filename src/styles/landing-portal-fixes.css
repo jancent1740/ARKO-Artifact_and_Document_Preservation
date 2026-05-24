@@ -1,0 +1,42 @@
+/* Fix museum card layouts to be consistent */
+
+/* Ensure all museum cards have proper height and structure */
+div[data-name="Background+Border+Shadow"] {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Make all museum card images the same height */
+div[data-name="Background+Border+Shadow"] > div:first-child > div:first-child {
+  height: 192px !important;
+  min-height: 192px !important;
+  max-height: 192px !important;
+}
+
+/* Ensure proper spacing in museum cards */
+div[data-name="Background+Border+Shadow"] > div:first-child {
+  gap: 24px !important;
+}
+
+/* Add hover effects to all Visit Museum buttons */
+div[data-name="Button"]:has(p:contains("Visit Museum")) {
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+div[data-name="Button"]:has(p:contains("Visit Museum")):hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.2) !important;
+}
+
+/* Ensure all museum card descriptions have consistent padding */
+div[data-name="Background+Border+Shadow"] div[data-name="Container"] > div > div {
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+/* Fix button container spacing */
+div[data-name="Container"]:has(div[data-name="Button"]) {
+  padding-top: 24px !important;
+  gap: 12px !important;
+}

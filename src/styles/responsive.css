@@ -1,0 +1,100 @@
+@media (max-width: 1023px) {
+  /* Table cells stack vertically as cards */
+  table, thead, tbody, th, td, tr {
+    box-sizing: border-box;
+  }
+
+  table.w-full {
+    display: block;
+  }
+
+  table.w-full thead {
+    display: none;
+  }
+
+  table.w-full tbody {
+    display: block;
+  }
+
+  table.w-full tbody tr {
+    display: block;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  table.w-full tbody td {
+    display: flex;
+    align-items: center;
+    padding: 6px 0 !important;
+    border: none !important;
+    gap: 8px;
+  }
+
+  table.w-full tbody td:before {
+    content: attr(data-label);
+    font-size: 11px;
+    font-weight: 600;
+    color: #6A7282;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 90px;
+    flex-shrink: 0;
+  }
+
+  /* Actions cell: position at top-right of the card, no label */
+  table.w-full tbody td[data-label="Actions"] {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  table.w-full tbody td[data-label="Actions"]:before {
+    display: none;
+  }
+
+  table.w-full tbody tr {
+    position: relative;
+  }
+
+  /* Modals - full width on mobile */
+  .fixed.inset-0.bg-black\/50 .max-w-3xl,
+  .fixed.inset-0.bg-black\/50 .max-w-2xl,
+  .fixed.inset-0.bg-black\/50 .max-w-\[672px\],
+  .fixed.inset-0.bg-black\/50 .max-w-\[896px\] {
+    max-width: 100% !important;
+    margin: 0 8px;
+    max-height: 95vh !important;
+  }
+
+  .fixed.inset-0.bg-black\/50 .px-8 {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+
+  .fixed.inset-0.bg-black\/50 .p-6 {
+    padding: 12px !important;
+  }
+
+  .fixed.inset-0.bg-black\/50 .px-6 {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  .fixed.inset-0.bg-black\/50 .py-4 {
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .fixed.inset-0.bg-black\/50 table.w-full tbody tr {
+    margin: 0;
+    border-radius: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+}
